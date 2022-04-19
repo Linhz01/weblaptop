@@ -1,0 +1,111 @@
+.product-top {
+    background-color: #c4c4c4;
+    height: 30px;
+    padding-top: 2px;
+}
+
+.container-inner {
+    padding-left: 112px;
+    padding-right: 6vw;
+    
+    
+}
+
+.detailcontent {
+    padding-top: 20px;
+}
+
+.detailcontentbot {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+#contentfilter {
+    width: 100%;
+    
+    border: 0px solid #c3c3c3;
+    border-radius: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    margin-right: 0px;
+  }
+
+  #contentfilter img {
+      width: 100%;
+
+  }
+
+  #myTab {
+      justify-content: center;
+  }
+
+  #contentlaptop img {
+    width: 100%;
+    object-fit: contain;
+  
+  }
+
+  #contentlaptop .logo img{
+    width: 30%;
+    margin-left: 10px;
+  }
+
+  #contentlaptop {
+    width: 210px;
+    object-fit: contain;
+    border: 0px solid #c3c3c3;
+    border-radius: 0px;
+    flex-wrap: wrap;
+    background-color: white;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    margin-left: 20px;
+    margin-right: 15px;
+
+  }
+
+  #contentfilter .button{
+    margin-top: 2px;
+    margin-bottom: 20px;
+    padding: 5px 0px 5px 0px;
+    margin-left: 1px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    cursor: pointer;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  #contentfilter .button1{
+    background-color: #feffb9; 
+    color: black;
+    border: 1px solid #c4c4c4;
+    
+  }
+
+  #contentfilter .button1:hover{
+    background-color: #f6f877;
+    color: black;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    
+
+  }
+
+  #contentfilter .button2{
+    background-color: #f6b66b; 
+    color: black; 
+    border: 1px solid #c4c4c4;
+    
+  }
+
+  #contentfilter .button2:hover{
+    background-color: #df9a4b;
+    color: black;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+  }
+  

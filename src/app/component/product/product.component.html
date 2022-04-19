@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div style="background-color: #ededed;">
+    <div class="product-top">
+    <div class="container-inner">
+        <a href="#default" class="logo">Home </a>/
+        <a href="#default" class="logo">Danh mục sản phẩm</a>   
+        
+    </div>
+    </div>
+    <div class="container-inner">
+        <div class="productcontent">
+        <div class="row">
+            <div class="col-md-3">
+              <b>Bộ lọc</b>
+              <div id="contentfilter">
+                
+              </div>
+            </div>
+            <div class="col-md-9">
+                <b></b>
+                <h3>Tất cả sản phẩm</h3>
+                <div class="row">
+                
+                <div id="contentlaptop" *ngFor="let product of products">
+                  <img src="{{product.imageproduct}}">
+                  <div class="logo">
+                  <img src="https://philong.com.vn/media/brand/lenovo.jpg">
+                  </div>
+                  <a href="/product/detail">
+                  <b>{{product.productname}}</b>
+                  </a>
+                  <div class="col-md-12">
+                  </div> 
+                  <!-- <a href="details/{{product.id}}" (click)="productDetails(product.id)"> -->
+                  <a href="details">
+                  <p>{{product.price | number}} đ</p>
+                  </a>
+                  <button class="button button1">Mua Ngay</button>
+              
+                </div>
+              </div>
+        </div> 
+    </div>
+    <div class="paging"></div>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>
