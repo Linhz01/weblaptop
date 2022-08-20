@@ -1,11 +1,11 @@
 package com.linh.shop.model;
 
-import java.io.Serializable;
+// import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-public class Contacts implements Serializable{
+public class Contacts{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

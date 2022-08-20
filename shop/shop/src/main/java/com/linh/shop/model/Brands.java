@@ -1,4 +1,6 @@
 package com.linh.shop.model;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -15,8 +17,16 @@ public class Brands{
     @NotNull(message = "Không được để trống trường này")
     private String logo;
 
-    // @OneToMany(mappedBy = "categories")
+    // @OneToMany(mappedBy = "brands")
     // private List<Products> products;
+
+    // public List<Products> getProducts() {
+    //     return products;
+    // }
+
+    // public void setProducts(List<Products> products) {
+    //     this.products = products;
+    // }
 
     public Brands() {
     }
@@ -26,7 +36,6 @@ public class Brands{
         this.id = id;
         this.name = name;
         this.logo = logo;
-        // this.products = products;
     }
 
     public Long getId() {
@@ -53,13 +62,6 @@ public class Brands{
         this.logo = logo;
     }
 
-    // public List<Products> getProducts() {
-    //     return products;
-    // }
-
-    // public void setProducts(List<Products> products) {
-    //     this.products = products;
-    // }
 
     @Override
     public String toString() {

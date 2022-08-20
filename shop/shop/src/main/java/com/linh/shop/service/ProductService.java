@@ -38,5 +38,10 @@ public class ProductService {
     public void delete(Long id){
         productRepository.deleteProductById(id);
     }
+
+    public List<Products> fin10(){
+        return productRepository.fin10();
+    }
+
 }
 

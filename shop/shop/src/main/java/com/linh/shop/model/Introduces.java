@@ -1,11 +1,11 @@
 package com.linh.shop.model;
 
-import java.io.Serializable;
+// import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
 @Entity
-public class Introduces implements Serializable{
+
+public class Introduces{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -14,14 +14,10 @@ public class Introduces implements Serializable{
     @NotNull(message = "Không được rỗng")
     private String content;
     
-    @ManyToOne
-    @JoinColumn(name = "admim_id", nullable = false)
-    private Admins admins;
 
-    public Introduces(int id, @NotNull(message = "Không được rỗng") String content, Admins admins) {
+    public Introduces(int id, @NotNull(message = "Không được rỗng") String content) {
         this.id = id;
         this.content = content;
-        this.admins = admins;
     }
 
     public Introduces() {
@@ -41,15 +37,5 @@ public class Introduces implements Serializable{
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Admins getAdmins() {
-        return admins;
-    }
-
-    public void setAdmins(Admins admins) {
-        this.admins = admins;
-    }
-
-    
+    }    
 }

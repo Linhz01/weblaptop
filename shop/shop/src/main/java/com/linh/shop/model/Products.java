@@ -5,13 +5,16 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+
 @Entity
 public class Products implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(nullable = false, updatable = false)
+	private Long id;
     
+    @Column(unique = true)
+    @NotBlank
     @NotNull(message = "Không được để trống")
     private String productname;
 
@@ -50,15 +53,13 @@ public class Products implements Serializable{
     private Categories categories;
 
     @ManyToOne
-    @JoinColumn(name = "brand_id", nullable = false)
+    @JoinColumn(name = "brand_id")
     private Brands brands;
 
     public Products() {
     }
 
-    
-
-    public Products(int id, @NotNull(message = "Không được để trống") String productname,
+    public Products(Long id, @NotNull(message = "Không được để trống") String productname,
             @NotNull(message = "Không được để trống") int price, @NotNull(message = "Không được để trống") String cpu,
             @NotNull(message = "Không được để trống") String harddrive, String ram, String feature,
             String microprocessor, int sonhan, int soluong, String capacity,
@@ -83,13 +84,13 @@ public class Products implements Serializable{
         this.brands = brands;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
 
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

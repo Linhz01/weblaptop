@@ -1,55 +1,45 @@
 package com.linh.shop.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-public class CateNews implements Serializable{
+public class CateNews{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
     
     @NotNull
-    private String name;
+    @Column(name = "name")
+    private String namecate;
     
-    @OneToMany(mappedBy = "catenews")
-    private List<News> news;
 
     public CateNews() {
     }
 
-    public CateNews(int id, @NotNull String name, List<News> news) {
+    public CateNews(Long id, @NotNull String namecate) {
         this.id = id;
-        this.name = name;
-        this.news = news;
+        this.namecate = namecate;
+
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return namecate;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<News> getNews() {
-        return news;
-    }
-
-    public void setNews(List<News> news) {
-        this.news = news;
+    public void setName(String namecate) {
+        this.namecate = namecate;
     }
 
     

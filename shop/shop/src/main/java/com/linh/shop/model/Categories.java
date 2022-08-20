@@ -1,5 +1,7 @@
 package com.linh.shop.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -7,14 +9,22 @@ import javax.validation.constraints.*;
 public class Categories{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(nullable = false, updatable = false)
+	@Column(nullable = false)
 	private Long id;
 
     @NotNull
     private String categoryname;
     
-    // @OneToMany(mappedBy = "categories")
-    // private List<Products> products;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Products> products;
+
+    public Set<Products> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Products> products) {
+        this.products = products;
+    }
 
     public Categories() {
     }
@@ -22,7 +32,6 @@ public class Categories{
     public Categories(Long id, @NotNull String categoryname) {
         this.id = id;
         this.categoryname = categoryname;
-        // this.products = products;
     }
 
     public Long getId() {
@@ -40,14 +49,5 @@ public class Categories{
     public void setCategoryname(String categoryname) {
         this.categoryname = categoryname;
     }
-
-    // public List<Products> getProducts() {
-    //     return products;
-    // }
-
-    // public void setProducts(List<Products> products) {
-    //     this.products = products;
-    // }
-
     
 }

@@ -31,9 +31,9 @@ public class Transactions {
 
     private String note;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users users;
+    // @ManyToOne
+    // @JoinColumn(name = "user_id", nullable = false)
+    // private Users users;
 
     public Transactions() {
     }
@@ -42,7 +42,7 @@ public class Transactions {
             @NotNull(message = "Không được để trống") int phone,
             @NotNull(message = "Không được để trống") @Email(message = "Email không hợp lệ") String email,
             @NotNull(message = "Không được để trống") String address, String datetime, int total, String status,
-            String note, Users users) {
+            String note) {
         this.id = id;
         this.fullname = fullname;
         this.phone = phone;
@@ -52,7 +52,7 @@ public class Transactions {
         this.total = total;
         this.status = status;
         this.note = note;
-        this.users = users;
+
     }
 
     public int getId() {
@@ -127,13 +127,7 @@ public class Transactions {
         this.note = note;
     }
 
-    public Users getUsers() {
-        return users;
-    }
 
-    public void setUsers(Users users) {
-        this.users = users;
-    }
     
     
 }
