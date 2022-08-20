@@ -1,0 +1,241 @@
+<div class="contentproducts " id="main-container">
+    <h3>Quản lý Danh mục</h3>
+    <br>
+    <div class="row">
+    <div class="contentx col-md-5" style="background-color: white;" >
+        <br>
+        <h2>Danh mục sản phẩm</h2>
+        <button class="btn btn-success" (click)="onOpenModalEdit(null,'add')">Thêm mới</button>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên danh mục</th>
+                <th scope="col" > <div style="float: right;">Thao tác</div></th>
+
+              </tr>
+            </thead>
+            <tbody *ngFor="let categories of category | paginate: {id:'cate', itemsPerPage: 5, currentPage: p }">
+              <tr>
+                <th scope="row">{{categories.id}}</th>
+                <td>{{categories.categoryname}}</td>
+                <td>
+                <div style="float: right;">
+                    <a (click)="onOpenModalEdit(categories, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                    <a (click)="onOpenModalEdit(categories, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                </div>
+                </td>
+                </tr>
+              <tr>
+            </tbody>
+          </table>
+          <pagination-controls id="cate" (pageChange)="p = $event" previousLabel="Trước"
+          nextLabel="Tiếp"
+          maxSize="5"
+          >
+         </pagination-controls>
+    </div>
+    <div class="contentxy col-md-6" style="background-color: white;" >
+        <br>
+        <h2>Danh mục tin tức</h2>
+        <button class="btn btn-success" (click)="onOpenModalEditNew(null,'addnew')">Thêm mới</button>
+        <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên danh mục</th>
+                <th scope="col" > <div style="float: right;">Thao tác</div></th>
+
+              </tr>
+            </thead>
+            <tbody *ngFor="let catenew of catenew | paginate: {id:'new', itemsPerPage: 5, currentPage: q }">
+              <tr>
+                <th scope="row">{{catenew.id}}</th>
+                <td>{{catenew.name}}</td>
+                <td>
+                    <div style="float: right;">    
+                    <a (click)="onOpenModalEditNew(catenew, 'editnew')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                    <a (click)="onOpenModalEditNew(catenew, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+          <pagination-controls id="new" (pageChange)="q = $event" previousLabel="Trước"
+          nextLabel="Tiếp"></pagination-controls>
+    </div>
+    </div>
+</div>
+<!-- Form -->
+<!-- Form add category -->
+<div class="modal fade" id="addCateModal" tabindex="-1" role="dialog" aria-labelledby="addCateLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="addCateLabel">Thêm danh mục</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #addForm="ngForm"  (ngSubmit)="onAddCategory(addForm)">
+               <div class="form-group col-md-12">
+                  <label for="categoryname"><div class=row style="margin-left: 1px;">Tên danh mục<div style="color: red;">*</div></div></label>
+                  <input type="" ngModel name="categoryname" class="form-control" id="categoryname" placeholder="Nhập tên danh mục" required>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" id="add-employee-form" class="btn btn-dark" data-dismiss="modal">Hủy</button>
+                  <button [disabled]="addForm.invalid" type="submit" class="btn btn-success">Thêm</button>
+               </div>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>
+
+<!-- Form edit category -->
+<div class="modal fade" id="updateCateModal" tabindex="-1" role="dialog" aria-labelledby="updateCateModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="updateCateModalLabel">Chỉnh sửa danh mục: {{editCategories?.categoryname}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form #editForm="ngForm">
+              <input type="hidden" ngModel="" name="id" class="form-control" id="id" placeholder="">
+               <div class="form-group">
+                  <label for="categoryname"><div class=row style="margin-left: 1px;">Tên danh mục sản phẩm<div style="color: red;">*</div></div></label>
+                  <input type="" ngModel="{{editCategories?.categoryname}}" name="categoryname" class="form-control" id="categoryname" aria-describedby="emailHelp" placeholder="Nhập tên danh mục">
+               </div>
+               <input type="hidden" ngModel="{{editCategories?.id}}" name="id" class="form-control" id="id" placeholder="">
+               <div class="modal-footer">
+                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Hủy</button>
+                  <button (click)="onUpdateCategory(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Lưu thay đổi</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+ </div>
+
+<!-- Form delete category -->
+<div class="modal fade" id="deleteCateModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="deleteModelLabel">Xóa danh mục: {{deleteCategories?.categoryname}}</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <div style="color: red;"><p>Các sản phẩm liên quan cũng sẽ bị xóa</p></div>
+           <p>Bạn có chắc muốn xóa danh mục sản phẩm này?</p>
+           <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+              <button (click)="onDeleteCategory(deleteCategories?.id)" class="btn btn-danger" data-dismiss="modal">Đồng ý</button>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+<!-- From delete success
+<div class="modal fade" id="deleteCateModalSuccess" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabelSuccess" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="deleteModelLabelSuccess">Thông báo</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <p>Xóa thành công</p>
+           <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+           </div>
+        </div>
+     </div>
+  </div>
+</div> -->
+<!-- Form add catenew -->
+<div class="modal fade" id="addCateNewModal" tabindex="-1" role="dialog" aria-labelledby="addCateNewLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="addCateNewLabel">Thêm danh mục tin tức</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #addFormx="ngForm" (ngSubmit)="onAddCateNew(addFormx)">
+               <div class="form-group col-md-12">
+                  <label for="name">Tên danh mục</label>
+                  <input type="" ngModel name="name" class="form-control" id="name" placeholder="Nhập tên danh mục" required>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" id="add-catenew-form" class="btn btn-dark" data-dismiss="modal">Hủy</button>
+                  <button [disabled]="addFormx.invalid" type="submit" class="btn btn-success">Thêm</button>
+               </div>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>
+
+<!-- Form edit catenew -->
+<div class="modal fade" id="updateCateNewModal" tabindex="-1" role="dialog" aria-labelledby="updateCateNewModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="updateCateNewModalLabel">Chỉnh sửa danh mục: {{editCategoryNews?.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form #editFormx="ngForm">
+              <input type="hidden" ngModel="" name="id" class="form-control" id="id" placeholder="">
+               <div class="form-group">
+                  <label for="name">Tên danh mục tin tức</label>
+                  <input type="" ngModel="{{editCategoryNews?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nhập tên danh mục">
+               </div>
+               <input type="hidden" ngModel="{{editCategoryNews?.id}}" name="id" class="form-control" id="id" placeholder="fromto">
+               <div class="modal-footer">
+                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Hủy</button>
+                  <button (click)="onUpdateCateNew(editFormx.value)" data-dismiss="modal" class="btn btn-primary" >Lưu thay đổi</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+ </div>
+
+ <!-- Form delete catenew -->
+<div class="modal fade" id="deleteCateNewModal" tabindex="-1" role="dialog" aria-labelledby="deleteCateNewModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="deleteCateNewModalLabel">Xóa danh mục: {{deleteCategoryNews?.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <p>Bạn có muốn xóa danh mục tin tức này?</p>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+               <button (click)="onDeleteCateNew(deleteCategoryNews?.id)" class="btn btn-danger" data-dismiss="modal">Đồng ý</button>
+            </div>
+         </div>
+      </div>
+   </div>
+ </div>
+
+

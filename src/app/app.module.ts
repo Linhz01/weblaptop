@@ -5,47 +5,38 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserComponent } from './component/user/user.component';
-import { ProductComponent } from './component/product/product.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductServiceService } from './service/product-service.service';
-import { UserServiceService } from './service/user-service.service';
-import { HomeComponent } from './component/home/home.component';
+import { UserService } from './service/user-service.service';
 import { ContactsComponent } from './component/contacts/contacts.component';
-import { DetailsComponent } from './component/details/details.component';
-import { HeaderComponent } from './base/header/header.component';
-import { FooterComponent } from './base/footer/footer.component';
 import { LoginComponent } from './component/login/login.component';
-import { CartComponent } from './component/cart/cart.component';
-import { NewComponent } from './component/new/new.component';
+import { LayoutUserModule } from './layout-user/layout-user.module';
+import { CommentComponent } from './component/comment/comment.component';
+import { TransactionComponent } from './component/transaction/transaction.component';
+import { IntroducesComponent } from './component/introduces/introduces.component';
+import { ErorpageComponent } from './erorpage/erorpage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EllipsisModule } from 'ngx-ellipsis';
+import { RegisterComponent } from './component/register/register.component';
+
+
+
 
 const routes: Routes = [
-  { path: 'products', component: ProductComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'header', component: HeaderComponent },
-  { path: 'footer', component: FooterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'details', component: DetailsComponent },
-  { path: 'carts', component: CartComponent },
-  { path: 'news', component: NewComponent },
-  { path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    ProductComponent,
-    HomeComponent,
     ContactsComponent,
-    DetailsComponent,
-    HeaderComponent,
-    FooterComponent,
+    CommentComponent,
+    TransactionComponent,
+    IntroducesComponent,
     LoginComponent,
-    CartComponent,
-    NewComponent
+    ErorpageComponent,
+    RegisterComponent,
+    
   ],
   
   imports: [
@@ -55,9 +46,15 @@ const routes: Routes = [
     FormsModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
+    LayoutUserModule,
+    BrowserAnimationsModule,
+    EllipsisModule,
+    ReactiveFormsModule,
+    
+
 
   ],
-  providers: [ProductServiceService, UserServiceService],
+  providers: [ProductServiceService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

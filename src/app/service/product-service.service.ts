@@ -4,11 +4,12 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Products } from 'src/app/model/products';
 
+const baseUrl = 'http://localhost:8080/product/find';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductServiceService {
-  private apiServerUrl = 'http://localhost:8080';
+  private apiServerUrl = "http://localhost:8080";
 
   constructor(private http: HttpClient){}
 
@@ -28,7 +29,17 @@ export class ProductServiceService {
     return this.http.delete<void>(`${this.apiServerUrl}/product/delete/${productId}`);
   }
 
-  public getProductByID(productId: number): Observable<any> {
-    return this.http.get(`${this.apiServerUrl}/product/find/${productId}`);
+  getProductByID(id: any): Observable<any> {
+    return this.http.get(`${this.apiServerUrl}/product/find/${id}`);
   }
+
+  getProductByBrandID(brandID: any): Observable<any> {
+    return this.http.get(`${this.apiServerUrl}/product/all/brand/${brandID}`);
+  }
+
 }
+
+//   getAll(params: any): Observable<any> {
+//     return this.http.get<any>(`${this.apiServerUrl}/product/`, { params });
+//   }
+// }

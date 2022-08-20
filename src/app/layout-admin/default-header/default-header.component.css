@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+
+/* Style the header with a grey background and some padding */
+.header {
+    overflow: hidden;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    
+  }
+
+  .flex {
+
+  }
+  
+  /* Style the header links */
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  
+  
+  /* Change the background color on mouse-over */
+  .header a:hover {
+    background-color: #545353;
+    color: white;
+  }
+
+
+  /* Float the link section to the right */
+  .header-right {
+    float: right;
+  }
+  .header-center {
+    float: none;
+    padding-left: 400px;
+  }
+
+
+

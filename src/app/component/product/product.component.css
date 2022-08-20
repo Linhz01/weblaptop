@@ -1,8 +1,8 @@
 .container-inner {
-    padding-left: 112px;
-    padding-right: 6vw;
-    
-    
+  padding-left: 102px;
+  padding-right: 6vw;
+  
+  
 }
 
 .productcontent {
@@ -15,10 +15,10 @@
 }
 #contentfilter {
     width: 100%;
-    height: 500px;
+    height: 740px;
     border: 0px solid #c3c3c3;
     border-radius: 0px;
-    display: flex;
+
     flex-wrap: wrap;
     background-color: white;
     margin-right: 0px;
@@ -26,7 +26,7 @@
   }
 
   #contentlaptop {
-    width: 210px;
+    width: 188px;
     object-fit: contain;
     border: 0px solid #c3c3c3;
     border-radius: 0px;
@@ -38,11 +38,14 @@
     margin-left: 10px;
   }
 
-  #contentlaptop img {
+  #contentlaptop .imagep img {
     width: 100%;
+    height: 150px;
     object-fit: contain;
   
   }
+
+  
 
   #contentlaptop .logo img{
     width: 30%;
@@ -51,6 +54,7 @@
 
   #contentlaptop b{
     margin-left: 10px;
+    margin-right: 10px;
   }
 
   #contentlaptop p{
@@ -59,7 +63,7 @@
 
   #contentlaptop .button{
     margin-top: 50px;
-    padding: 5px 65px 5px 66px;
+    padding: 5px 23px 5px 24px;
     margin-left: 1px;
     text-align: center;
     text-decoration: none;
@@ -69,6 +73,7 @@
     transition-duration: 0.2s;
     cursor: pointer;
     border-radius: 0px;
+    
   }
 
   #contentlaptop .button1{
@@ -83,3 +88,19 @@
 
   }
 
+  .button:active {
+    box-shadow: 0 5px rgb(255, 210, 63);
+    transform: translateY(1px);
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .productcontent h3{
+    
+  }
+
+.productcontent .item{
+  margin-bottom: 30px;
+}

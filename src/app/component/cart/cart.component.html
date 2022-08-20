@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div>
     <div class="product-top">
         <div class="container-inner">
@@ -7,56 +6,81 @@
             
         </div>
     </div>
-    <div class="cartcontent">
-        <div class="col-md-10">
-            <div id="contentlaptop" >
-                <table class="table" >
-                    <thead>
-                      <tr>
-
-                        <th scope="col"><h3>Giỏ hàng</h3></th>
-                        <th scope="col">Số lượng</th>
-                        <th scope="col">Màu sắc</th>
-                        <th scope="col">
-                            <div class="total"  style="float: right;">Giá</div>
-                        </th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        
-                        <td>
-                            <div class="row">
-                                <img src="https://philong.com.vn/media/product/250-27443-1.jpg" >
-                                <div class="col">
-                                <h4>Name product</h4>
-                                <button type="submit" class="button button2" style="background-color: rgb(247, 93, 93);">Xóa</button>
-                                </div>
-                            </div>
-                        </td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div class="total"  style="float: right;">
-                            <b><p>Tổng x sản phẩm: đ</p></b>
-                            <button class="button button1" type="submit" style="float: right;"><b>Thanh toán ngay</b></button>
-                            </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+    <ng-container *ngIf="products.length==0">
+        <div class="cartcontent">
+            <div class="col-md-10">
+                <div id="contentlaptop" >
+                    <div class="center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoD-1rWCk3XlwMVJzuxJAB0yIHzLfb87ChzA&usqp=CAU">
+                        <h1>Giỏ hàng của bạn đang trống</h1>
+                        <h3>Thêm vật phẩm vào giỏ hàng</h3>
+                        <a href="home/products" class="btn btn-primary">
+                        Mua sắm ngay bây giờ
+                        </a>
+                      </div>
+    
+                </div>
             </div>
         </div>
-    </div>
+    </ng-container>
+
+    <ng-container *ngIf="products.length !=0">
+        <div class="cartcontent" id="cartcontent">
+            <div class="col-md-10">
+                <div id="contentlaptop" >
+        <table class="table" >
+            <thead>
+              <tr>
+                <th scope="col"><h3>Giỏ hàng</h3></th>
+                <th scope="col">Đơn giá</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">
+                    <div class="total">Giá</div>
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of products; let i = index" ng-app="" >
+                <td>
+                    <div class="row">
+                      <a routerLink="/home/details/{{item.id}}">
+                        <img src="{{item.imageproduct}}" >
+                      </a>
+                        <div class="col">
+                        <a routerLink="/home/details/{{item.id}}">
+                        <h4>{{item.productname}}</h4>
+                        </a>
+                        <button (click)="removeItem(item)" type="submit" class="button button2" style="background-color: rgb(247, 93, 93);">Xóa</button>
+                        </div>
+                    </div>
+                </td>
+
+                <td>{{item.price | number}}</td>
+                <!-- <td>{{item.quantity}}</td> -->
+                <td>
+                  <input type="number" ngModel="{{item.quantity}}" name="quantity" min="1" max="10" >
+                </td>
+                <td div class="total">{{item.total*item.quantity | number}} đ</td>
+              </tr>
+              <tr>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="total"  style="float: right;">
+                    <b><p class="total">Thành tiền: {{grandTotal | number}}đ</p></b>
+                    <button class="button button1" type="submit" style="float: right;" (click)="onOpenModalEdit('add')"><b>Thanh toán ngay</b></button>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+        </div>
+    </ng-container>
     <div class="cartcontent">
         <div class="col-md-10">
         <div id="contentlaptop" >
@@ -67,4 +91,158 @@
         </div>
     </div>
 </div>
-<app-footer></app-footer>
+<!-- Form transaction -->
+<div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel" aria-hidden="true"  *ngIf="!isLoggedIn">
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h2 class="modal-title" id="transactionModalLabel">Thanh toán</h2>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <form #addForm="ngForm" (ngSubmit)="onAddTransaction(addForm)">
+                 <h3><b>Thông tin khách hàng</b></h3>
+                 <div class="infor">
+                    <input type="" ngModel name="fullname" class="form-control" id="fullname" placeholder="Họ và tên" required>
+                    <input type="" ngModel name="phone" class="form-control" id="phone" placeholder="Số điện thoại" required>
+                    <input type="" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+                    
+                  </div>
+                    <input type="" ngModel name="note" class="form-control" id="note" placeholder="Ghi chú">
+                <hr>
+                <div class="row">
+                <div class="col-md-6">
+                 <b>Chọn cách thức nhận hàng:</b>
+                 </div>
+                 <br>
+                 <div class="form-check col-md-6">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Giao hàng tận nơi
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6"></div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" disabled>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Nhận tại cửa hàng
+                    </label>
+                </div>
+                </div>
+                <br>
+                <input type="" ngModel name="address" class="form-control" id="address" placeholder="Địa chỉ" required><br>
+                <b>Ngày giao hàng:</b>
+                <br>
+                <br>
+                <input type="date" ngModel name="datetime" class="form-control" id="datetime" placeholder="Ngày giao hàng" min="2022-06-02" max="9999-12-31">
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                   <b>Chọn hình thức thanh toán:</b>
+                   </div>
+                   <br>
+                   <div class="form-check col-md-6">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3" checked>
+                      <label class="form-check-label" for="flexRadioDefault3">
+                        Thanh toán tiền mặt khi nhận hàng
+                      </label>
+                    </div>
+                  </div>
+                  <br>
+                  <b><p>Tổng tiền: {{grandTotal | number}}đ</p></b>  
+                  <input type="hidden" [(ngModel)]="grandTotal" name="total" class="form-control" id="total" placeholder="" >
+                  <br>
+                  <br>
+                <div class="modal-footer">
+                    
+                    <button type="button" id="add-employee-form" class="btn btn-dark" data-dismiss="modal">Hủy</button>
+                    <button  [disabled]="addForm.invalid" type="submit" class="btn btn-success">Đặt hàng</button>
+                 </div>
+             </form>
+          </div>
+       </div>
+    </div>
+  </div>
+
+  <!-- Form transaction -->
+<div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h2 class="modal-title" id="transactionModalLabel">Thanh toán</h2>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #addForm="ngForm" (ngSubmit)="onAddTransaction(addForm)">
+               <h3>Thông tin khách hàng</h3>
+               <div class="infor">
+                  <input type="" [(ngModel)]="name" name="fullname" class="form-control" id="fullname" placeholder="Họ và tên" required>
+                  <input type="" [(ngModel)]="phone" name="phone" class="form-control" id="phone" placeholder="Số điện thoại" required>
+                  <input type="" [(ngModel)]="email" name="email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                  <input type="" ngModel name="note" class="form-control" id="note" placeholder="Ghi chú">
+              <hr>
+              <div class="row">
+              <div class="col-md-6">
+                <b>Chọn cách thức nhận hàng:</b>
+              </div>
+              <br>
+              <div class="form-check col-md-6">
+                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                 <label class="form-check-label" for="flexRadioDefault1">
+                   Giao hàng tận nơi
+                 </label>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col-md-6"></div>
+               <div class="form-check">
+                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" disabled>
+                 <label class="form-check-label" for="flexRadioDefault2">
+                   Nhận tại cửa hàng
+                 </label>
+             </div>
+             </div>
+             <br>
+             <input type="" ngModel name="address" class="form-control" id="address" placeholder="Địa chỉ" required><br>
+             <b>Ngày giao hàng:</b>
+             <br>
+             <br>
+             <input type="date" ngModel name="datetime" class="form-control" id="datetime" placeholder="Ngày giao hàng" min="2022-06-02" max="9999-12-31" >
+             <hr>
+             <div class="row">
+               <div class="col-md-6">
+                <b>Chọn hình thức thanh toán:</b>
+                </div>
+                <br>
+                <div class="form-check col-md-6">
+                   <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3" checked>
+                   <label class="form-check-label" for="flexRadioDefault3">
+                     Thanh toán tiền mặt khi nhận hàng
+                   </label>
+                 </div>
+               </div>
+               <br>
+               <b><p>Tổng tiền: {{grandTotal | number}}đ</p></b>  
+               <input type="hidden" [(ngModel)]="grandTotal" name="total" class="form-control" id="total" placeholder="" >
+               <br>
+               <br>
+             <div class="modal-footer">
+                 
+                 <button type="button" id="add-employee-form" class="btn btn-dark" data-dismiss="modal">Hủy</button>
+                 <button  [disabled]="addForm.invalid" type="submit" class="btn btn-success">Đặt hàng</button>
+              </div>
+          </form>
+       </div>
+    </div>
+ </div>
+</div>
+
+
+

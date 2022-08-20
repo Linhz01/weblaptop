@@ -1,0 +1,90 @@
+
+    <!-- Sidebar  -->
+    <nav id="sidebar" >
+        <div class="sidebar-header">
+            <h3>Admin Page</h3>
+        </div>
+        
+        <ul class="list-unstyled components">
+            <li>
+                <a href="admin" *ngIf="showModeratorBoard">Dash Board</a>
+            </li>   
+            <li>
+                <a href="#danhmuc" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" *ngIf="showModeratorBoard">Quản lý danh mục</a>
+                <ul class="collapse list-unstyled" id="danhmuc">
+                    <li>
+                        <a href="admin/category">Danh mục sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="admin/brand">Hãng</a>
+                    </li>
+                    <li>
+                        <a href="admin/product">Sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="admin/new">Tin tức</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="#daodien" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" *ngIf="showModeratorBoard">Quản lý giao diện</a>
+                <ul class="collapse list-unstyled" id="daodien">
+                    <li>
+                        <a href="admin/introduce">Giới thiệu</a>
+                    </li>
+                    <li>
+                        <a href="#">Hỗ trợ trực tuyến</a>
+                    </li>
+                    <li>
+                        <a href="#">Nôi dung khác</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenuz" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" *ngIf="showModeratorBoard">Quản lý thông tin</a>
+                <ul class="collapse list-unstyled" id="pageSubmenuz">
+                    <li>
+                        <a href="admin/transaction">Danh sách đơn hàng</a>
+                    </li>
+                    <li>
+                        <a href="admin/contact">Khách hàng liên hệ</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"  *ngIf="showAdminBoard">Cáu hình tài khoản</a>
+                <ul class="collapse list-unstyled" id="user">
+                    <li>
+                        <a href="admin/user">Quản lý tài khoản</a>
+                    </li>
+                    <li>
+                        <a href="admin/profile">Thông tin cá nhân</a>
+                    </li>
+                    <li>
+                        <a href="login">Đăng xuất</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li>
+                <a href="home/products" class="article">Quay về trang chủ</a>
+            </li>
+        </ul>
+    </nav>
+
+<script>
+    $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    
+    $(".nav .nav-link").on("click", function(){
+    $(".nav").find(".active").removeClass("active");
+    $(this).addClass("active");
+});
+</script>
+

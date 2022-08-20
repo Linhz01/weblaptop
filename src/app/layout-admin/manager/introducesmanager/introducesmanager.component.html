@@ -1,0 +1,40 @@
+<div class="contentproducts " id="main-container" *ngFor="let intro of introduces ">
+    <h3>Quản lý bài giới thiệu</h3>
+    <br>
+    <div class="contentx col-md-11" style="background-color: white;" >
+    <br>
+    <button class="btn btn-primary" (click)="onOpenModalEdit(intro,'edit')">Chỉnh sửa</button>
+        <hr>
+         
+        <div [innerHtml]="intro.content | safeHtml"></div>
+
+    </div>
+</div>
+<!-- Form edit intro -->
+<div class="modal fade" id="updateIntroModal" tabindex="-1" role="dialog" aria-labelledby="updateIntroModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="updateIntroModalLabel">Chỉnh sửa bài giới thiệu</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <form #editForm="ngForm">
+               <input type="hidden" ngModel="" name="id" class="form-control" id="id" placeholder="">
+                <div class="form-group">
+                   <label for="categoryname">Nội dung</label>
+                   <ckeditor  ngModel="{{editIntro?.content}}" name="content" id="content" placeholder="Nhập nội dung">
+                    </ckeditor>
+                </div>
+                <input type="hidden" ngModel="{{editIntro?.id}}" name="id" class="form-control" id="id" placeholder="">
+                <div class="modal-footer">
+                   <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Hủy</button>
+                   <button (click)="updateIntro(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Lưu thay đổi</button>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+  </div>

@@ -1,4 +1,4 @@
-<app-header></app-header>
+
 <div style="background-color: #ededed;">
     <div class="product-top">
     <div class="container-inner">
@@ -8,26 +8,26 @@
         
     </div>
     </div>
-    <div class="container-inner">
+    <div class="container-inner" *ngIf="currentProduct.id">
       <!-- <div class="container-inner" *ngIf="product"></div> -->
         <div class="detailcontent">
             <div id="contentfilter">
                 <div class="col">
                     <br>
-                    <h2>Tên sản phẩm</h2>
+                    <h2>{{currentProduct.productname}}</h2>
                     <hr>
                 <div class="row">
                 <div class="col-md-6">
-                <img src="https://philong.com.vn/media/product/27443-1.jpg">
+                <img src="{{currentProduct.imageproduct}}">
                 </div>
                 <div class="col-md-6">
                 <b>
-                    <p>Giá: </p>
+                    <p>Giá: {{currentProduct.price | number}} vnđ</p>
                     <p>Giá ưu đãi:</p>
                     <p>Tình trạng:</p>
                     <div class="row">
                       <div class="col-md-6">
-                          <button class="button button1 btn-block">Thêm vào giỏ hàng</button>
+                          <button (click)=addtocart(currentProduct) class="button button1 btn-block">Thêm vào giỏ hàng</button>
                       </div>
                       <div class="col-md-6">
                         <button class="button button2 btn-block">Mua ngay</button>
@@ -38,36 +38,36 @@
                         <tbody>
                           <tr>
                             <th>Hãng sản xuất</th>
-                            <td></td>
+                            <td>{{currentProduct.brands.name}}</td>
                           </tr>
                           <tr>
                             <th>Tên sản phẩm</th>
-                            <td></td>
+                            <td>{{currentProduct.productname}}</td>
 
                           </tr>
                           <tr>
                             <th>Danh mục</th>
-                            <td></td>
+                            <td>{{currentProduct.categories.categoryname}}</td>
                           </tr>
                           <tr>
                             <th>Bộ vi xử lí</th>
-                            <td></td>
+                            <td>{{currentProduct.microprocessor}}</td>
                           </tr>
                           <tr>
                             <th>Số nhân</th>
-                            <td></td>
+                            <td>{{currentProduct.sonhan}}</td>
                           </tr>
                           <tr>
                             <th>Số luồng</th>
-                            <td></td>
+                            <td>{{currentProduct.soluong}}</td>
                           </tr>
                           <tr>
                             <th>RAM</th>
-                            <td></td>
+                            <td>{{currentProduct.ram}}</td>
                           </tr>
                           <tr>
                             <th>Dung lượng</th>
-                            <td></td>
+                            <td>{{currentProduct.capacity}}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -80,7 +80,7 @@
         </div>
     </div>
     <div class="container-inner">
-        <div class="detailcontent">
+        <div class="detailcontent" *ngIf="currentProduct.id">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><b>Thông tin</b></h4></a>
@@ -96,7 +96,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                       <div class="col">
-                        <p>Thông tin sản phẩm</p>
+                        <p>{{currentProduct.information}}</p>
                     </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -119,23 +119,12 @@
     </div>
     <div class="container-inner">
         <div class="detailcontentbot">
-            <div id="contentfilter">
+            <div id="contentfilterx">
                 <div class="col">
                     <br>
                     <h4><b>Sản phẩm liên quan</b></h4>
                     <hr>
                     <div class="row">
-                        <div id="contentlaptop">
-                            <img src="https://philong.com.vn/media/product/250-27443-1.jpg">
-                            <div class="logo">
-                            </div>
-                            <a href="/product/detail">
-                            <b>Name product</b>
-                            </a>
-                            <a href="/product/detail">
-                            <p>Price product</p>
-                            </a>
-                        </div>
                         <div id="contentlaptop">
                             <img src="https://philong.com.vn/media/product/250-27443-1.jpg">
                             <div class="logo">
@@ -198,5 +187,5 @@
         </div>
     </div>
 </div>
-<app-footer></app-footer>
+
 

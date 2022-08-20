@@ -1,0 +1,153 @@
+
+<div class="logincontent" style="padding-top: 100px;">
+    <a href="#default" >CompanyLogo</a>
+    <img src="/src/app/static/Linhz.png">
+</div>
+<div class="logincontent">
+<div class="col-md-4">
+    <div id="contentlaptop">
+        <b><h3>Đăng ký tài khoản</h3></b>
+        <form         *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+
+        >
+            <div class="form-group">
+              <label for="username"><b>Tài khoản</b></label>
+              <input type="" class="form-control"
+              type=""
+              class="form-control"
+              name="username"
+              [(ngModel)]="form.username"
+              required
+              minlength="3"
+              maxlength="20"
+              #username="ngModel" id="username" aria-describedby="" placeholder="Nhập tài khoản">
+              <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                <div *ngIf="username.errors.required">Vui lòng nhập tài khoản</div>
+                <div *ngIf="username.errors.minlength">
+                 Tài khoant phải trên 3 kí tự
+                </div>
+                <div *ngIf="username.errors.maxlength">
+                 Tài khoản không được vượt quá 20 kí tự
+            </div>
+        </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  [(ngModel)]="form.email"
+                  required
+                  email
+                  #email="ngModel" placeholder="Nhập Email"
+                />
+                <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                  <div *ngIf="email.errors.required">Vui lòng nhập địa chỉ email</div>
+                  <div *ngIf="email.errors.email">
+                    Email không hợp lệ
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password"><b>Mật khẩu</b></label>
+                <input type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="6"
+                #password="ngModel" placeholder="Nhập mật khẩu">
+              <div
+                class="alert-danger"
+                role="alert"
+                *ngIf="password.errors && f.submitted"
+              >
+                <div *ngIf="password.errors.required">Vui lòng nhập mật khẩu</div>
+                <div *ngIf="password.errors.minlength">
+                  Mật khẩu phải trên 6 kí tự
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="name"><b>Họ và tên</b></label>
+                <input type="" class="form-control"
+                type=""
+                class="form-control"
+                name="name"
+                [(ngModel)]="form.name"
+                required
+                minlength="3"
+                maxlength="20"
+                #name="ngModel" id="name" aria-describedby="" placeholder="Nhập họ và tên">
+            <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                    <div *ngIf="name.errors.required">Vui lòng nhập họ tên</div>
+            </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone"><b>Số điện thoại</b></label>
+                <input type="" class="form-control"
+                type=""
+                class="form-control"
+                name="phone"
+                [(ngModel)]="form.phone"
+                required
+                minlength="10"
+                maxlength="15"
+                #phone="ngModel" id="phone" aria-describedby="" placeholder="Nhập sđt">
+            <div class="alert-danger" *ngIf="phone.errors && f.submitted">
+                    <div *ngIf="phone.errors.required">Vui lòng nhập số điện thoại</div>
+                    <div *ngIf="phone.errors.minlength">
+                    Số điện thoại không hợp lệ
+                    </div>
+                    <div *ngIf="phone.errors.maxlength">
+                    Số điện thoại không hợp lệ
+                </div>
+            </div>
+            </div>
+              <div class="form-group">
+                <label for="address"><b>Địa chỉ</b></label>
+                <input type="" class="form-control"
+                type=""
+                class="form-control"
+                name="address"
+                [(ngModel)]="form.address"
+                required
+                minlength="3"
+                maxlength="20"
+                #address="ngModel" id="address" aria-describedby="" placeholder="Nhập địa chỉ">
+              </div>
+            <br>
+            <a href="/products">
+            <button type="submit" class="button button1 btn-lg btn-block"><b>Đăng ký</b></button>
+            </a>
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Signup failed!<br />{{ errorMessage }}
+              </div>
+          </form>
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Đăng kí thành công
+          </div>
+    </div>
+    <a href="home/login"><button type="submit" class="button2 button3 btn-lg btn-block"><b>Quay về trang đăng nhập</b></button></a>
+</div>
+</div>
+<div class="footer-bottom-login">
+<!-- Copyright -->
+<div class="text-center p-3">
+  <div class="linkfooter">
+  <a href="">Điều khoản sử dụng</a>
+  <a href="">Quyền riêng tư</a>
+  <a href="">Giúp đỡ</a>
+  <p class="text-black">Copyright 2022 ©</p>
+  </div>
+</div>
+<!-- Copyright -->
+</div>
+

@@ -23,8 +23,8 @@
 
 .logincontent .button{
     margin-top: 2px;
-    padding: 5px 65px 5px 66px;
-    margin-left: 1px;
+    padding: 5px 65px 5px 65px;
+    margin-left: 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

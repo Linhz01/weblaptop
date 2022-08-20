@@ -1,0 +1,35 @@
+<div>
+    <div class="product-top">
+        <div class="container-inner">
+            <a href="#default" class="logo">Home </a>/
+            <a href="#default" class="logo">Giới thiệu</a>
+            
+        </div>
+    </div>
+  
+    <div class="cartcontent">
+        <div class="container-inner">
+            <div class="row">
+            <div id="contentlaptop" >
+            
+                <h2>Giới thiệu</h2>
+                <hr>
+                <div *ngFor="let intro of introduces">
+                    <div [innerHtml]="intro.content"></div>
+                </div>
+            </div>
+            <div id="contentlaptopx" >
+            
+                <h2>Có thể bạn quan tâm</h2>
+                <hr>
+                <b>1.</b><p></p><br>
+                <b>2.</b><p></p><br>
+                <b>3.</b><p></p><br>
+                <b>4.</b><p></p><br>
+                <b>5.</b><p></p><br>
+                <b>6.</b><p></p>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

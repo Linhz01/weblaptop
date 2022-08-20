@@ -1,0 +1,49 @@
+<div class="header">
+    <div class="container-inner">
+    <div class="header-left">
+    <a href="home" class="logo">CompanyLogo</a>
+  </div>
+    <!-- <div class="header-center">
+      <div class="cate">
+      <a href="#home">Home</a><input type="text" id="fsearch" name="fsearch">
+      <a href="#home">Home</a>
+    </div>
+    </div> -->
+    <div class="header-right">
+      <div class="row">
+      <a href="#home">Vietnamese</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item" *ngIf="showModeratorBoard">
+          <a href="admin">Trang admin</a>
+        </li>
+      </ul>
+      <div *ngIf="!isLoggedIn">
+      <!-- <a href="/register" class="nav-link" routerLink="register">Sign Up</a> -->
+      <a href="/login" class="nav-link" routerLink="login">Đăng nhập</a>
+      </div>
+      <div *ngIf="isLoggedIn" >
+      <a href="/profile" routerLink="profile">{{ username }}</a>
+      <a href (click)="logout()">Đăng xuất</a>
+      </div>
+      <a  routerLink="carts">Giỏ hàng <i class="bi bi-cart"></i><span class="badge badge-pill badge-danger">{{totalItem}}</span></a>
+      </div>
+    </div>
+    </div>
+  </div>
+    <div class="header-bottom">
+      <div class="container-inner">
+      <b>
+      <a routerLink="products" class="logo">Danh mục sản phẩm</a>
+      <a href="#default" class="logo">Giảm giá</a>
+      <a href="#default" class="logo">Bán chạy</a>
+      <a routerLink="news" class="logo">Tin tức</a>
+      
+      </b>
+      </div>
+    </div>
+      <!-- <div class="header-center">
+        <div class="cate">
+        <a href="#home">Home</a><input type="text" id="fsearch" name="fsearch">
+        <a href="#home">Home</a>
+      </div>
+      </div> -->  

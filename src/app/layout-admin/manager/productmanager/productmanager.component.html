@@ -1,0 +1,264 @@
+<div class="contentproducts " id="main-container">
+    <h3>Quản lý sản phẩm</h3>
+    <button class="btna btn btn-success" (click)="onOpenModalEdit(null,'add')">Thêm sản phẩm</button>
+    <div class="input-group mb-3">
+    </div>
+    <div class="contentx col-md-11" style="background-color: white;" >
+      <br>
+      <b>Tổng: {{products.length}} sản phẩm</b>
+      <form class="form-inline my-2 my-lg-0" style="float: right;">
+         <input type="search" (ngModelChange)="searchProduct(key.value)" #key="ngModel" ngModel
+          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Tìm kiếm sản phẩm..." required>
+      </form>
+      <br>
+      <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Hãng</th>
+                <th scope="col">Danh mục</th>
+                <th scope="col">Hình ảnh</th>
+                <th scope="col">Giá</th>
+                <th scope="col" style="text-align: right;" >Hiển thị</th>
+                <th scope="col" > <div style="float: right;">Thao tác</div></th>
+
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of products | paginate: { itemsPerPage: 5, currentPage: p}">
+
+              <tr>
+                <th scope="row">{{product.id}}</th>
+                <td>{{product.productname}}</td>
+                <td>{{product.brands.name}}</td>
+                <td>{{product.categories.categoryname}}</td>
+                <td><img src="{{product.imageproduct}}"></td>
+                <td>{{product.price | number}} đ</td>
+                <td style="text-align: right;">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    </label>
+                </td>
+                <td>
+                  <div style="float: right;">
+                   <a (click)="onOpenModalEdit(product, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                    <a (click)="onOpenModalEdit(product, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                  </div>
+                  </td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          
+    </div>
+</div>
+<!-- Edit Modal -->
+<div class="modal fade" id="updateProductModal" tabindex="-1" role="dialog" aria-labelledby="productEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="productEditModalLabel">Chỉnh sửa sản phẩm: {{editProducts?.productname}}</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <form #editForm="ngForm">
+                <input type="hidden" ngModel="" name="id" class="form-control" id="id" placeholder="">
+                <div class="form-group">
+                  <label for="productname"><div class=row style="margin-left: 1px;">Tên sản phẩm<div style="color: red;">*</div></div></label>
+                   <input type="" ngModel="{{editProducts?.productname}}" name="productname" class="form-control" id="productname" placeholder="Nhập tên sản phẩm">
+                </div>
+                <input type="hidden" ngModel="{{editProducts?.id}}" name="id" class="form-control" id="id" placeholder="">
+                <div class="form-group">
+                  <label for="categories"><div class=row style="margin-left: 1px;">Danh mục<div style="color: red;">*</div></div></label>
+                    <select class="form-control" name="categories" id="categories" ngModel="{{editProducts?.categories}}">
+                    <option *ngFor="let categories of category" [ngValue]="categories">
+                        {{categories.categoryname}}
+                      </option>
+                    </select>
+                 </div>
+                 <div class="form-group">
+                  <label for="brands"><div class=row style="margin-left: 1px;">Hãng<div style="color: red;">*</div></div></label>
+                    <select class="form-control" name="brands" id="brands" ngModel="{{editProducts?.brands}}">
+                    <option *ngFor="let state of brand"  [ngValue]="state">
+                        {{state.name}}
+                      </option>
+                      </select>
+                 </div>
+                <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="price"><div class=row style="margin-left: 1px;">Giá<div style="color: red;">*</div></div></label>
+                    <input type="" ngModel="{{editProducts?.price}}" name="price" class="form-control" id="price" placeholder="Nhập giá bán">
+                 </div>
+                 <div class="form-group col-md-6">
+                  <label for="microprocessor"><div class=row style="margin-left: 1px;">Bộ vi xử lý<div style="color: red;">*</div></div></label>
+                    <input type="" ngModel="{{editProducts?.microprocessor}}" name="microprocessor" class="form-control" id="microprocessor" placeholder="Nhập bộ vi xử lí">
+                 </div>
+                 <div class="form-group col-md-6">
+                  <label for="ram"><div class=row style="margin-left: 1px;">RAM<div style="color: red;">*</div></div></label>
+                    <input type="" ngModel="{{editProducts?.ram}}" name="ram" class="form-control" id="ram" placeholder="Nhập thông tin">
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label for="sonhan">Số nhân</label>
+                    <input type="number" ngModel="{{editProducts?.sonhan}}" name="sonhan" class="form-control" id="sonhan" placeholder="Nhập thông tin">
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label for="soluong">Số luồng</label>
+                    <input type="" ngModel="{{editProducts?.soluong}}" name="soluong" class="form-control" id="soluong" placeholder="Nhập thông tin">
+                 </div>
+                 <div class="form-group col-md-6">
+                  <label for="capacity"><div class=row style="margin-left: 1px;">Dung lượng<div style="color: red;">*</div></div></label>
+                    <input type="" ngModel="{{editProducts?.capacity}}" name="capacity" class="form-control" id="capacity" placeholder="Nhập thông tin">
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label for="capacity">Ổ cứng</label>
+                    <input type="" ngModel="{{editProducts?.capacity}}" name="harddrive" class="form-control" id="harddrive" placeholder="Nhập thông tin">
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label for="feature">Tính năng</label>
+                    <input type="" ngModel="{{editProducts?.capacity}}" name="feature" class="form-control" id="feature" placeholder="Nhập thông tin">
+                 </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">CPU</label>
+                    <input type="" ngModel="{{editProducts?.cpu}}" name="cpu" class="form-control" id="cpu" placeholder="Nhập thông tin">
+                </div>
+                <div class="form-group">
+                    <label for="email">Hình ảnh</label>
+                    <input type="" ngModel="{{editProducts?.imageproduct}}" name="imageproduct" class="form-control" id="imageproduct" placeholder="">
+                </div>
+                <img src=".imageproduct">
+                <div class="form-group">
+                    <label for="email">Thông tin sản phẩm</label>
+                    <input type="email" ngModel="{{editProducts?.information}}" name="information" class="form-control" id="information" placeholder="Thông tin">
+                </div>
+          
+                <!-- <div class="form-group">
+                    <label for="phone">Image URL</label>
+                    <input type="text" ngModel="{{editProducts?.productname}}" name="imageURL" class="form-control" id="imageURL" placeholder="Image URL">
+                 </div> -->
+                <div class="modal-footer">
+                   <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Hủy</button>
+                   <button (click)="onUpdateProduct(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Lưu thay đổi</button>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+  </div>
+
+  
+    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+           <div class="modal-content">
+              <div class="modal-header">
+                 <h5 class="modal-title" id="addProductLabel">Thêm sản phẩm</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+              </div>
+              <div class="modal-body">
+                 <form #addForm="ngForm"  (ngSubmit)="onAddProduct(addForm)">
+                    <div class="form-group">
+                       <label for="productname"><div class=row style="margin-left: 1px;">Tên sản phẩm<div style="color: red;">*</div></div></label>
+                       <input type="" ngModel name="productname" class="form-control" id="productname" placeholder="Nhập tên sản phẩm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category_id"><div class=row style="margin-left: 1px;">Danh mục<div style="color: red;">*</div></div></label>
+                        <select class="form-control" ngModel name="categories" id="categories">
+                        <option *ngFor="let categories of category" [ngValue]="categories">
+                            {{categories.categoryname}}
+                          </option>
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <label for="brand_id"><div class=row style="margin-left: 1px;">Hãng<div style="color: red;">*</div></div></label>
+                        <select class="form-control" ngModel name="brands" id="brands">
+                        <option *ngFor="let brands of brand" [ngValue]="brands">
+                            {{brands.name}}
+                          </option>
+                        
+                          </select>
+                     </div>
+                    <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="price"><div class=row style="margin-left: 1px;">Giá<div style="color: red;">*</div></div></label>
+                        <input type="" ngModel name="price" class="form-control" id="price" placeholder="Nhập giá bán" required>
+                     </div>
+                     <div class="form-group col-md-6">
+                        <label for="microprocessor"><div class=row style="margin-left: 1px;">Bộ vi xử lý<div style="color: red;">*</div></div></label>
+                        <input type="" ngModel name="microprocessor" class="form-control" id="microprocessor" placeholder="Nhập bộ vi xử lí" required>
+                     </div>
+                     <div class="form-group col-md-6">
+                        <label for="ram"><div class=row style="margin-left: 1px;">RAM<div style="color: red;">*</div></div></label>
+                        <input type="" ngModel name="ram" class="form-control" id="ram" placeholder="Nhập thông số" required>
+                     </div>
+                     <div class="form-group col-md-6">
+                        <label for="sonhan">Số luồng</label>
+                        <input type="" ngModel name="sonhan" class="form-control" id="sonhan" placeholder="Nhập thông số" required>
+                     </div>
+                     <div class="form-group col-md-6">
+                        <label for="soluong">Số luồng</label>
+                        <input type="" ngModel name="soluong" class="form-control" id="soluong" placeholder="Nhập thông số" required>
+                     </div>
+                     <div class="form-group col-md-6">
+                        <label for="capacity"><div class=row style="margin-left: 1px;">Dung lượng<div style="color: red;">*</div></div></label>
+                        <input type="" ngModel name="capacity" class="form-control" id="capacity" placeholder="Nhập thông số" required>
+                     </div>
+                     <div class="form-group col-md-6">
+                        <label for="capacity">Ổ cứng</label>
+                        <input type="" ngModel name="harddrive" class="form-control" id="harddrive" placeholder="Nhập thông số" required>
+                     </div>
+                     <div class="form-group col-md-6">
+                        <label for="feature">Tính năng</label>
+                        <input type="" ngModel name="feature" class="form-control" id="feature" placeholder="Nhập thông số" required>
+                     </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">CPU</label>
+                        <input type="" ngModel name="cpu" class="form-control" id="cpu" placeholder="Nhập thông số" required>
+                    </div>
+                    <div class="form-group">
+                     <label for="">Thông tin sản phẩm</label>
+                     <input type="" ngModel name="information" class="form-control" id="information" placeholder="Nhập thông tin" required>
+                 </div>
+                    <div class="form-group">
+                        <label for="email">Hình ảnh</label>
+                        <input type="file" ngModel id="imageproduct" name="imageproduct">
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="phone">Image URL</label>
+                        <input type="text" ngModel="{{editProducts?.productname}}" name="imageURL" class="form-control" id="imageURL" placeholder="Image URL">
+                     </div> -->
+                     <div class="modal-footer">
+                        <button type="button" id="add-employee-form" class="btn btn-dark" data-dismiss="modal">Hủy</button>
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-success" >Thêm</button>
+                     </div>
+                 </form>
+              </div>
+           </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+           <div class="modal-content">
+              <div class="modal-header">
+                 <h5 class="modal-title" id="deleteModelLabel">Xóa sản phẩm</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+              </div>
+              <div class="modal-body">
+                 <p>Bạn có muốn xóa sản phẩm này?</p>
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button (click)="onDeleteProduct(deleteProducts?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>

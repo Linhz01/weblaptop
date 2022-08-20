@@ -1,0 +1,9 @@
+#content {
+    width: 100%;
+    padding-left: 250px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    background-color: #ededed;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

@@ -1,7 +1,7 @@
 import { Brands } from "./brands";
 import { Categories } from "./categories";
 
-export interface Products {
+export class Products {
     id: number;
     productname: string;
     price: number;
@@ -15,6 +15,6 @@ export interface Products {
     capacity: string;
     information: string;
     imageproduct: string;
-    category_id: Categories;
-    brand_id: Brands;
+    categories: Categories;
+    brands: Brands;
 }

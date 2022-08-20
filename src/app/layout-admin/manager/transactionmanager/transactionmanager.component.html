@@ -1,0 +1,96 @@
+<div class="contentproducts " id="main-container">
+    <h3>Danh sách đơn hàng</h3>
+    <div class="input-group mb-3">
+    </div>
+    <div class="contentx col-md-11" style="background-color: white;" >
+      <br>
+      <form class="form-inline my-2 my-lg-0" style="float: right;">
+         <input type="search" #key="ngModel" ngModel
+          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Tìm kiếm đơn hàng..." required>
+      </form>
+      <br>
+      <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên người mua</th>
+                <th scope="col">Sđt</th>
+                <th scope="col">Email</th>
+                <th scope="col">Địa chỉ</th>
+                <th scope="col">Tổng tiền</th>
+                <th scope="col">Ngày giao</th>
+                <th scope="col">Tình trạng đơn hàng</th>
+                <!-- <th scope="col">Tình trạng đơn hàng</th>
+                <th scope="col" style="text-align: right;" >Hiển thị</th> -->
+                <th scope="col" > <div style="float: right;"></div></th>
+
+              </tr>
+            </thead>
+            <tbody *ngFor="let transaction of trans | paginate: { itemsPerPage: 5, currentPage: p}">
+
+              <tr>
+                <th scope="row">{{transaction.id}}</th>
+                <td>{{transaction.fullname}}</td>
+                <td>{{transaction.phone}}</td>
+                <td>{{transaction.email}}</td>
+                <td>{{transaction.address}}</td>
+                <td>{{transaction.total | number}} đ</td>
+                <td>{{transaction.datetime}}</td>
+                <td *ngIf="transaction.status == null"><span class="badge badge-primary">Đang xử lý</span></td>
+                <td *ngIf="transaction.status == 'Đang xử lí'"><span class="badge badge-primary">Đang xử lý</span></td>
+                <td *ngIf="transaction.status == 'Đã giao'"><span class="badge badge-success">{{transaction.status}}</span></td>
+                <td *ngIf="transaction.status == 'Đơn hàng lỗi'"><span class="badge badge-danger">{{transaction.status}}</span></td>
+                <td>
+                  <div style="float: right;">
+                   <a (click)="onOpenModalEdit(transaction, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                  </div>
+                  </td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          
+    </div>
+</div>
+
+<!-- Form edit category -->
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="update" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="update">Chỉnh sửa giao dịch</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #editForm="ngForm">
+             <input type="hidden" ngModel="" name="id" class="form-control" id="id" placeholder="">
+              <div class="form-group">
+                 <label for="categoryname"><div class=row style="margin-left: 1px;">Tình trạng đơn hàng</div></label>
+                    <select class="form-control" name="status" id="status" ngModel="{{editTrans?.status}}">
+                    <option value="Đã giao">Đã giao</option>
+                      <option value="Đang xử lí">Đang xử lí</option>
+                      <option value="Đơn hàng lỗi">Đơn hàng lỗi</option>
+                    </select>
+                 </div>
+              <input type="hidden" ngModel="{{editTrans?.id}}" name="id" class="form-control" id="id" placeholder="">
+              <input type="hidden" ngModel="{{editTrans?.fullname}}" name="fullname" class="form-control" id="fullname" placeholder="">
+              <input type="hidden" ngModel="{{editTrans?.email}}" name="email" class="form-control" id="email" placeholder="">
+              <input type="hidden" ngModel="{{editTrans?.note}}" name="note" class="form-control" id="note" placeholder="">
+              <input type="hidden" ngModel="{{editTrans?.phone}}" name="phone" class="form-control" id="phone" placeholder="">
+              <input type="hidden" ngModel="{{editTrans?.total}}" name="total" class="form-control" id="total" placeholder="">
+              <input type="hidden" ngModel="{{editTrans?.datetime}}" name="datetime" class="form-control" id="datetime" placeholder="">
+              <input type="hidden" ngModel="{{editTrans?.address}}" name="address" class="form-control" id="address" placeholder="">
+
+              <div class="modal-footer">
+                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Hủy</button>
+                 <button (click)="onUpdateTrans(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Lưu thay đổi</button>
+              </div>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>

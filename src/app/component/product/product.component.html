@@ -1,4 +1,4 @@
-<app-header></app-header>
+
 <div style="background-color: #ededed;">
     <div class="product-top">
     <div class="container-inner">
@@ -12,30 +12,63 @@
         <div class="row">
             <div class="col-md-3">
               <b>Bộ lọc</b>
-              <div id="contentfilter">
-                
+              <div id="contentfilter" >
+              <div class="col">
+              <br>
+              <div class="item">
+              <h3>Danh mục<hr></h3>
+              <div *ngFor="let category of category">
+                <a href="home/products/brand/{{category.id}}">{{category.categoryname}}</a>
+              </div>
+              </div>
+              <div class="item">
+              <h3>Hãng<hr></h3>
+              <div *ngFor="let brand of brand">
+                <a href="home/products/brand/{{brand.id}}">{{brand.name}}</a>
+              </div>
+              </div>
+              <div class="item">
+                <h3>Giá<hr>
+                  <a href="">Dưới 10 triệu</a><br>
+                  <a href="">10 - 15 triệu</a><br>
+                  <a href="">15 - 20 triệu</a><br>
+                  <a href="">20 - 25 triệu</a><br>
+                  <a href="">25 - 30 triệu</a><br>
+                  <a href="">Trên 30 triệu</a>
+                </h3>
+                </div>
+              </div>
               </div>
             </div>
             <div class="col-md-9">
-                <b></b>
-                <h3>Tất cả sản phẩm</h3>
+              <div class="row">
+                <h2><b style="margin-left:10px;">Tất cả sản phẩm</b></h2>
+                <form class="form-inline my-2 my-lg-0" style="margin-left: 522px; ">
+                  <input type="search" #key="ngModel" ngModel
+                   name="key" id="searchName" class="form-control mr-sm-2" placeholder="Tìm kiếm sản phẩm..." required>
+                   <button (click)="searchProduct(key.value)" data-dismiss="modal" class="btn btn-primary" >Tìm kiếm</button>
+               </form>
+
+               </div>
+               <br>
                 <div class="row">
-                
-                <div id="contentlaptop" *ngFor="let product of products">
-                  <img src="{{product.imageproduct}}">
+                <div id="contentlaptop" *ngFor="let product of products | paginate: {id:'product', itemsPerPage: 10, currentPage: p}
+                                                                        | filter:searchp">
+                  <img src="{{product.imageproduct}}" style="width: 200px;
+                  height: 120px;
+                  object-fit: contain;">
                   <div class="logo">
-                  <img src="https://philong.com.vn/media/brand/lenovo.jpg">
+                  <img src="{{product.brands.logo}}">
                   </div>
-                  <a href="/product/detail">
-                  <b>{{product.productname}}</b>
-                  </a>
+                  
+                  <b><a href="" routerLink="/home/details/{{product.id}}">{{product.productname | slice:0:30}}...</a></b>
                   <div class="col-md-12">
                   </div> 
                   <!-- <a href="details/{{product.id}}" (click)="productDetails(product.id)"> -->
-                  <a href="details">
+                  <a href="" routerLink="/home/details/{{product.id}}">
                   <p>{{product.price | number}} đ</p>
                   </a>
-                  <button class="button button1">Mua Ngay</button>
+                  <button class="button button1" (click)=addtocart(product) >Thêm vào giỏ hàng</button>
               
                 </div>
               </div>
@@ -43,6 +76,10 @@
     </div>
     <div class="paging"></div>
     </div>
+    <pagination-controls id="product" (pageChange)="p = $event" previousLabel="Trước"
+    nextLabel="Tiếp" style="text-decoration: none; float: right;"></pagination-controls>
+    <br>
+    <br>
 </div>
 </div>
-<app-footer></app-footer>
+

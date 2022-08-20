@@ -1,0 +1,42 @@
+.product-top {
+    background-color: #c4c4c4;
+    height: 30px;
+    padding-top: 2px;
+}
+
+.container-inner {
+    padding-left: 102px;
+    padding-right: 6vw;
+    
+    
+}
+
+.cartcontent {
+    background-color: #ededed; 
+    display: flex;
+    /* justify-content: center; */
+
+}
+
+#contentlaptop {
+    width: 62%;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 0px 0px 100px 0px;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 10px;
+    margin-left: 16px;
+  }
+
+  #contentlaptopx {
+    width: 32%;
+    height: 100%;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 0px 0px 100px 0px;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 40px;
+  }
