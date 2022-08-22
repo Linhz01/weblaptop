@@ -16,4 +16,10 @@ public interface ProductRepository extends JpaRepository<Products, Long> {
     @Query(value = "select * from shoplaptop.products p where p.brand_id = ?1", nativeQuery = true)
     List<Products> fListProductsByBrandID(Long brand_id);
 
+    @Query(value = "select * from shoplaptop.products p where p.category_id = ?1", nativeQuery = true)
+    List<Products> fListProductsByCategoryID(Long category_id);
+
+    @Query(value = "SELECT * from shoplaptop.products p WHERE p.price between ?1 and ?2", nativeQuery = true)
+    List<Products>  find2530(Long minp, Long maxp);
+
 }

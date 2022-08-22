@@ -39,6 +39,18 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    @GetMapping("/all/category/{id}")
+    public ResponseEntity<List<Products>> getAllProductsByCategory(@PathVariable("id") Long id) {
+        List<Products> products = productRepository.fListProductsByCategoryID(id);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    @GetMapping("/all/price/{min}/{max}")
+    public ResponseEntity<List<Products>> getAllProductsByPrice(@PathVariable("min") Long minp, @PathVariable("max") Long maxp) {
+        List<Products> products = productRepository.find2530(minp, maxp);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Products> getProductById(@PathVariable("id") Long id){
 		Optional<Products> productData = productRepository.findById(id);
