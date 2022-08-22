@@ -47,20 +47,21 @@ export class BrandComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getProductByBrandID(this.route.snapshot.params["id"]);
+    // this.getProductByBrandID(this.route.snapshot.params["brandID"]);
+    this.getProduct();
     
   }
 
-  getProductByBrandID(brandID: string): void {
-    this.productService.getProductByBrandID(brandID)
-      .subscribe({
-        next: (data) => {
-          this.currentProduct = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
-  }
+  // getProductByBrandID(brandID: string): void {
+  //   this.productService.getProductByBrandID(brandID)
+  //     .subscribe({
+  //       next: (data) => {
+  //         this.currentProduct = data;
+  //         console.log(data);
+  //       },
+  //       error: (e) => console.error(e)
+  //     });
+  // }
 
   public getProduct(): void {
     

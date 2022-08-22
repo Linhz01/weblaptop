@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Products } from 'src/app/model/products';
 
@@ -33,8 +33,16 @@ export class ProductServiceService {
     return this.http.get(`${this.apiServerUrl}/product/find/${id}`);
   }
 
-  getProductByBrandID(brandID: any): Observable<any> {
-    return this.http.get(`${this.apiServerUrl}/product/all/brand/${brandID}`);
+  getProductByBrandID(brandID: any): Observable<Products[]> {
+    return this.http.get<any>(`${this.apiServerUrl}/product/all/brand/${brandID}`);
+  }
+
+  getProductByCategoryID(categoryID: any): Observable<Products[]> {
+    return this.http.get<any>(`${this.apiServerUrl}/product/all/category/${categoryID}`);
+  }
+
+  getProductByPrice(minP: any, maxP: any){
+    return this.http.get(`${this.apiServerUrl}/product/all/price/${minP}/${maxP}`);
   }
 
 }
@@ -43,3 +51,9 @@ export class ProductServiceService {
 //     return this.http.get<any>(`${this.apiServerUrl}/product/`, { params });
 //   }
 // }
+
+interface GetReponse{
+  _embedded: {
+    products: Products[];
+  }
+}

@@ -43,6 +43,8 @@ export class ProductComponent implements OnInit {
   public category: Categories[];
   public brand: Brands[];
   public products: Products[];
+  currentCategoryID: number;
+  currentBrandID: number;
   
   constructor(private productService: ProductServiceService, 
               private cate: CategoryServiceService,
@@ -52,9 +54,13 @@ export class ProductComponent implements OnInit {
               private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
-  this.getProduct();
-  this.getCategory();
-  this.getBrand();
+    this.route.paramMap.subscribe(() => {
+      this.getProduct;
+    });
+    this.getProduct();
+    this.getCategory();
+    this.getBrand();
+    
 
   
   }
@@ -85,22 +91,61 @@ export class ProductComponent implements OnInit {
     }
 
   public getProduct(): void {
-    
-    this.productService.getProduct().subscribe(
-      (response: Products[]) => {
-        this.products = response;
-        this.products .forEach((a:any) =>
-        {
-          Object.assign(a,{quantity:1,total:a.price});
-        });
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
+    const hasCategoryID: boolean = this.route.snapshot.paramMap.has('id');
+    const hasBrandID: boolean = this.route.snapshot.paramMap.has('bid');
+    // if (hasBrandID && hasCategoryID){
+    //   this.currentCategoryID = +this.route.snapshot.paramMap.get('id');
+    //   this.currentBrandID = +this.route.snapshot.paramMap.get('bid');
+    //   this.productService.getProductByCategoryID(this.currentCategoryID).subscribe(
+    //     data => {
+    //       this.products = data;
+    //     }
+    //   )
+    //   this.productService.getProductByBrandID(this.currentBrandID).subscribe(
+    //     data => {
+    //       this.products = data;
+    //     }
+    //   )
+    // }
+    if (hasCategoryID) {
+      this.currentCategoryID = +this.route.snapshot.paramMap.get('id');
+      this.productService.getProductByCategoryID(this.currentCategoryID).subscribe(
+        data => {
+          this.products = data;
+        }
+      )
+    }
+    else{
+      if (hasBrandID) {
+        this.currentBrandID = +this.route.snapshot.paramMap.get('bid');
+        this.productService.getProductByBrandID(this.currentBrandID).subscribe(
+          data => {
+            this.products = data;
+          }
+        )
       }
-    );
+      else {
+        this.productService.getProduct().subscribe(
+          (response: Products[]) => {
+            this.products = response;
+            this.products .forEach((a:any) =>
+            {
+               Object.assign(a,{quantity:1,total:a.price});
+             });
+            },
+          (error: HttpErrorResponse) => {
+            alert(error.message);
+          }
+        );
+        }
+    }
+    
+
+
+
   }
 
-  public getProductByBrandID(brandID: string): void {
+  public getProductByBrandID(brandID: number): void {
     
     this.productService.getProductByBrandID(brandID).subscribe(
       (response: Products[]) => {

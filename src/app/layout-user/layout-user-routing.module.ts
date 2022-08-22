@@ -14,7 +14,9 @@ import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductComponent },
-  { path: 'products/brand/:id', component: BrandComponent },
+  { path: 'brand/:bid', component: ProductComponent },
+  { path: 'category/:id', component: ProductComponent },
+  // { path: 'products/brand/:id', component: BrandComponent },
   { path: 'admin', component: LayoutAdminComponent },
   { path: 'details/:id', component: DetailsComponent },
   { path: 'header', component: HeaderComponent },
