@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Introduces } from 'src/app/model/introduces';
 import { IntroducesServiceService } from 'src/app/service/introduces-service.service';
-import * as DecoupledEditor from '@ckeditor/ckeditor5-angular';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-introducesmanager',
@@ -12,7 +12,7 @@ import * as DecoupledEditor from '@ckeditor/ckeditor5-angular';
 
 export class IntroducesmanagerComponent implements OnInit {
   public introduces: Introduces[];
-  public Editor = DecoupledEditor;
+  public Editor = ClassicEditor;
   public editIntro: Introduces;
   constructor(
     private introService: IntroducesServiceService,
@@ -71,6 +71,13 @@ export class IntroducesmanagerComponent implements OnInit {
     container.appendChild(button);
     button.click();
     
+}
+
+public onReady( editor ) {
+  editor.ui.getEditableElement().parentElement.insertBefore(
+      editor.ui.view.toolbar.element,
+      editor.ui.getEditableElement()
+  );
 }
 
 }

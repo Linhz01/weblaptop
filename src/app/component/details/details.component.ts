@@ -71,7 +71,7 @@ export class DetailsComponent implements OnInit {
       );
     }
 
-    getProductID(id: string): void {
+    getProductID(id: number): void {
       this.productService.getProductByID(id)
         .subscribe({
           

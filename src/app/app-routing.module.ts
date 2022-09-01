@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactsComponent } from './component/contacts/contacts.component';
 import { DetailsComponent } from './component/details/details.component';
 import { LoginComponent } from './component/login/login.component';
 import { NewComponent } from './component/new/new.component';
@@ -10,8 +11,8 @@ import { LayoutUserComponent } from './layout-user/layout-user.component';
 
 const routes: Routes = [
 
-  { path: 'details/:id', component: DetailsComponent },
-  { path: 'details', component: DetailsComponent },
+  // { path: 'details/:id', component: DetailsComponent },
+  // { path: 'details', component: DetailsComponent },
   { path: 'news', component: NewComponent },
   { path: 'home/login', component: LoginComponent },
   { path: 'home/register', component: RegisterComponent },

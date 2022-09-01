@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrandComponent } from '../component/brand/brand.component';
 import { CartComponent } from '../component/cart/cart.component';
+import { ContactsComponent } from '../component/contacts/contacts.component';
 import { DetailsComponent } from '../component/details/details.component';
 import { HomeComponent } from '../component/home/home.component';
 import { IntroducesComponent } from '../component/introduces/introduces.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'products', component: ProductComponent },
   { path: 'brand/:bid', component: ProductComponent },
   { path: 'category/:id', component: ProductComponent },
+  { path: 'price/:min/:max', component: ProductComponent },
   // { path: 'products/brand/:id', component: BrandComponent },
   { path: 'admin', component: LayoutAdminComponent },
   { path: 'details/:id', component: DetailsComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent },
   { path: 'carts', component: CartComponent },
   { path: 'news', component: NewComponent },
+  { path: 'contacts', component: ContactsComponent },
   { path: 'introduces', component: IntroducesComponent },
   { path: '', component: HomeComponent },
 

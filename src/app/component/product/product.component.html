@@ -29,12 +29,12 @@
               </div>
               <div class="item">
                 <h3>Giá<hr>
-                  <a href="">Dưới 10 triệu</a><br>
-                  <a href="">10 - 15 triệu</a><br>
-                  <a href="">15 - 20 triệu</a><br>
-                  <a href="">20 - 25 triệu</a><br>
-                  <a href="">25 - 30 triệu</a><br>
-                  <a href="">Trên 30 triệu</a>
+                  <a href="home/price/0/10000000">Dưới 10 triệu</a><br>
+                  <a href="home/price/10000000/15000000">10 - 15 triệu</a><br>
+                  <a href="home/price/15000000/20000000">15 - 20 triệu</a><br>
+                  <a href="home/price/20000000/25000000">20 - 25 triệu</a><br>
+                  <a href="home/price/25000000/30000000">25 - 30 triệu</a><br>
+                  <a href="home/price/30000000/10000000000">Trên 30 triệu</a>
                 </h3>
                 </div>
               </div>
@@ -48,10 +48,13 @@
                    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Tìm kiếm sản phẩm..." required>
                    <button (click)="searchProduct(key.value)" data-dismiss="modal" class="btn btn-primary" >Tìm kiếm</button>
                </form>
-
+               <b *ngIf="!isHomeRoute()" style="margin-left:10px;">Lap top đã lọc
+               </b>
                </div>
                <br>
+
                 <div class="row">
+                
                 <div id="contentlaptop" *ngFor="let product of products | paginate: {id:'product', itemsPerPage: 10, currentPage: p}
                                                                         | filter:searchp">
                   <img src="{{product.imageproduct}}" style="width: 200px;
@@ -71,13 +74,26 @@
                   <button class="button button1" (click)=addtocart(product) >Thêm vào giỏ hàng</button>
               
                 </div>
+                <ng-container *ngIf="products.length==0">
+                  <div class="cartcontent" style="padding-left: 10px;">
+                              <div class="">
+                                  <h1>Không tìm thấy sản phẩm phù hợp</h1>
+                                  <a href="home/products" class="btn btn-primary">
+                                  Quay lại
+                                  </a>
+                                </div>
+                  </div>
+              </ng-container>
               </div>
+              
         </div> 
     </div>
     <div class="paging"></div>
     </div>
+
     <pagination-controls id="product" (pageChange)="p = $event" previousLabel="Trước"
-    nextLabel="Tiếp" style="text-decoration: none; float: right;"></pagination-controls>
+    nextLabel="Tiếp" style="text-decoration: none; float: right;">
+  </pagination-controls>
     <br>
     <br>
 </div>

@@ -29,8 +29,8 @@ export class ProductServiceService {
     return this.http.delete<void>(`${this.apiServerUrl}/product/delete/${productId}`);
   }
 
-  getProductByID(id: any): Observable<any> {
-    return this.http.get(`${this.apiServerUrl}/product/find/${id}`);
+  getProductByID(id: number): Observable<Products> {
+    return this.http.get<Products>(`${this.apiServerUrl}/product/find/${id}`);
   }
 
   getProductByBrandID(brandID: any): Observable<Products[]> {
@@ -41,8 +41,8 @@ export class ProductServiceService {
     return this.http.get<any>(`${this.apiServerUrl}/product/all/category/${categoryID}`);
   }
 
-  getProductByPrice(minP: any, maxP: any){
-    return this.http.get(`${this.apiServerUrl}/product/all/price/${minP}/${maxP}`);
+  getProductByPrice(minP: any, maxP: any): Observable<any>{
+    return this.http.get<any>(`${this.apiServerUrl}/product/all/price/${minP}/${maxP}`);
   }
 
 }

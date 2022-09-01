@@ -36,6 +36,7 @@
   /* Float the link section to the right */
   .header-right {
     float: right;
+    padding-right: 10px;
   }
   .header-center {
     float: none;

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from '../component/details/details.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { DefaultSidebarComponent } from './default-sidebar/default-sidebar.component';
 import { BrandmanagerComponent } from './manager/brandmanager/brandmanager.component';
 import { CategorymanagerComponent } from './manager/categorymanager/categorymanager.component';
@@ -10,8 +11,10 @@ import { IntroducesmanagerComponent } from './manager/introducesmanager/introduc
 import { NewmanagerComponent } from './manager/newmanager/newmanager.component';
 import { ProductmanagerComponent } from './manager/productmanager/productmanager.component';
 import { TransactionmanagerComponent } from './manager/transactionmanager/transactionmanager.component';
+import { UsermanagerComponent } from './manager/usermanager/usermanager.component';
 
 const routes: Routes = [
+  { path: '', component: DashboardComponent },
   { path: 'product', component: ProductmanagerComponent },
   { path: 'detail/:id', component: DetailsComponent },
   { path: 'transaction', component: TransactionmanagerComponent },
@@ -21,6 +24,7 @@ const routes: Routes = [
   { path: 'brand', component: BrandmanagerComponent },
   { path: 'category', component: CategorymanagerComponent },
   { path: 'sidebar', component: DefaultSidebarComponent },
+  { path: 'user', component: UsermanagerComponent },
 
   
 

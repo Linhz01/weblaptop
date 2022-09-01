@@ -18,7 +18,7 @@ import { ErorpageComponent } from './erorpage/erorpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EllipsisModule } from 'ngx-ellipsis';
 import { RegisterComponent } from './component/register/register.component';
-
+import {GoogleAnalyticsService} from './service/google-analytics.service';
 
 
 
@@ -54,7 +54,7 @@ const routes: Routes = [
 
 
   ],
-  providers: [ProductServiceService, UserService],
+  providers: [ProductServiceService, UserService, GoogleAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

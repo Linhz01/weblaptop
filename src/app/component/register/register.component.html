@@ -74,6 +74,29 @@
                 </div>
               </div>
             </div>
+            <!-- <div class="form-group">
+              <label for="confirmpassword"><b>Nhập lại mật khẩu</b></label>
+              <input type="password"
+              class="form-control"
+              name="confirmpassword"
+            
+              required
+              minlength="6"
+              #confirmpassword="" placeholder="Nhập lại mật khẩu"
+              pattern="{{password.value}}"
+              >
+            <div
+              class="alert-danger"
+              role="alert"
+              *ngIf="password.errors && f.submitted"
+            >
+              <div *ngIf="confirmpassword.errors.required">Vui lòng nhập lại mật khẩu</div>
+              <div *ngIf="confirmpassword.errors.minlength">
+                Mật khẩu phải trên 6 kí tự
+              </div>
+              <div *ngIf="confirmpassword.errors.pattern">Mật khẩu không trùng khớp</div>
+            </div>
+          </div> -->
             <div class="form-group">
                 <label for="name"><b>Họ và tên</b></label>
                 <input type="" class="form-control"
@@ -127,8 +150,8 @@
             <a href="/products">
             <button type="submit" class="button button1 btn-lg btn-block"><b>Đăng ký</b></button>
             </a>
-            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                Signup failed!<br />{{ errorMessage }}
+            <div class="alert alert-danger" *ngIf="f.submitted && isSignUpFailed">
+                Đăng ký thất bại:<br />{{ errorMessage }}
               </div>
           </form>
           <div class="alert alert-success" *ngIf="isSuccessful">

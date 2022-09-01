@@ -45,6 +45,10 @@ export class ProductComponent implements OnInit {
   public products: Products[];
   currentCategoryID: number;
   currentBrandID: number;
+  minPrice: number;
+  maxPrice: number;
+  thePageSize: number = 5;
+  thePageNumber: number = 1;
   
   constructor(private productService: ProductServiceService, 
               private cate: CategoryServiceService,
@@ -93,6 +97,8 @@ export class ProductComponent implements OnInit {
   public getProduct(): void {
     const hasCategoryID: boolean = this.route.snapshot.paramMap.has('id');
     const hasBrandID: boolean = this.route.snapshot.paramMap.has('bid');
+    const hasMin: boolean = this.route.snapshot.paramMap.has('min');
+    const hasMax: boolean = this.route.snapshot.paramMap.has('max');
     // if (hasBrandID && hasCategoryID){
     //   this.currentCategoryID = +this.route.snapshot.paramMap.get('id');
     //   this.currentBrandID = +this.route.snapshot.paramMap.get('bid');
@@ -113,6 +119,7 @@ export class ProductComponent implements OnInit {
         data => {
           this.products = data;
         }
+      
       )
     }
     else{
@@ -125,6 +132,16 @@ export class ProductComponent implements OnInit {
         )
       }
       else {
+        if (hasMin && hasMax){
+          this.minPrice = +this.route.snapshot.paramMap.get('min');
+          this.maxPrice = +this.route.snapshot.paramMap.get('max');
+          this.productService.getProductByPrice(this.minPrice, this.maxPrice).subscribe(
+            data => {
+              this.products = data
+            }
+          )
+        }
+        else {
         this.productService.getProduct().subscribe(
           (response: Products[]) => {
             this.products = response;
@@ -138,10 +155,8 @@ export class ProductComponent implements OnInit {
           }
         );
         }
+        }
     }
-    
-
-
 
   }
 
@@ -157,7 +172,13 @@ export class ProductComponent implements OnInit {
     );
   }
 
+  isHomeRoute() {
+    return this.router.url === '/home/products';
+  }
 
+  isSearchRoute(){
+    return this.router.url === '/home/brand/?id';
+  }
 
   public searchProduct(key: string): void {
     console.log(key);
@@ -185,4 +206,6 @@ export class ProductComponent implements OnInit {
     this.cartService.addtoCart(product);
     window.alert('Thêm vào giỏ hàng thành công!');
   }
+
+
 }

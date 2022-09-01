@@ -37,7 +37,7 @@
                 <td>{{transaction.address}}</td>
                 <td>{{transaction.total | number}} đ</td>
                 <td>{{transaction.datetime}}</td>
-                <td *ngIf="transaction.status == null"><span class="badge badge-primary">Đang xử lý</span></td>
+                <td *ngIf="transaction.status == null"><span class="badge badge-primary">Đang chờ xác nhận</span></td>
                 <td *ngIf="transaction.status == 'Đang xử lí'"><span class="badge badge-primary">Đang xử lý</span></td>
                 <td *ngIf="transaction.status == 'Đã giao'"><span class="badge badge-success">{{transaction.status}}</span></td>
                 <td *ngIf="transaction.status == 'Đơn hàng lỗi'"><span class="badge badge-danger">{{transaction.status}}</span></td>

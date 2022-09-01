@@ -1,1 +1,40 @@
-<p>usermanager works!</p>
+<div class="contentproducts " id="main-container">
+    <h3>Quản lý tài khoản</h3>
+    <div class="contentx col-md-11" style="background-color: white;" >
+        <br>
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Tài khoản<i class="fa fa-sort"></i></th>
+                  <th scope="col">Tên</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Địa chỉ</th>
+                  <th scope="col">Số điện thoại</th>
+                  <th scope="col" > <div style="float: right;">Thao tác</div></th>
+  
+                </tr>
+              </thead>
+              <tbody *ngFor="let user of users ">
+  
+                <tr>
+                  <th scope="row">{{user.id}}</th>
+                  <td>{{user.username}}</td>
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.address}}</td>
+                  <td>{{user.phone}}</td>
+                  <td>
+                    <div style="float: right;">
+                     <a class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                      <a  class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>
+                    </div>
+                    </td>
+                </tr>
+                
+              </tbody>
+            </table>
+            <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+            
+      </div>
+</div>

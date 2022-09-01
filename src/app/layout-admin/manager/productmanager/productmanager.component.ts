@@ -141,5 +141,6 @@ export class ProductmanagerComponent implements OnInit {
     container.appendChild(button);
     button.click();
     
-}
+  }
+
 }

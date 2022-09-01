@@ -5,7 +5,7 @@
             <h3>Admin Page</h3>
         </div>
         
-        <ul class="list-unstyled components">
+        <ul class="list-unstyled components" *ngIf="showModeratorBoard">
             <li>
                 <a href="admin" *ngIf="showModeratorBoard">Dash Board</a>
             </li>   
@@ -53,8 +53,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"  *ngIf="showAdminBoard">Cáu hình tài khoản</a>
-                <ul class="collapse list-unstyled" id="user">
+                <!-- <ul class="collapse list-unstyled" id="user">
                     <li>
                         <a href="admin/user">Quản lý tài khoản</a>
                     </li>
@@ -64,7 +63,72 @@
                     <li>
                         <a href="login">Đăng xuất</a>
                     </li>
+                </ul> -->
+            </li>
+        </ul>
+
+<!-- 
+admin roles -->
+        <ul class="list-unstyled-admin components" *ngIf="showAdminBoard">
+            <li>
+                <a href="admin" *ngIf="showAdminBoard">Dash Board</a>
+            </li>   
+            <li>
+                <a href="#danhmucA" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" *ngIf="showAdminBoard">Quản lý danh mục</a>
+                <ul class="collapse list-unstyled" id="danhmucA">
+                    <li>
+                        <a href="admin/category">Danh mục sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="admin/brand">Hãng</a>
+                    </li>
+                    <li>
+                        <a href="admin/product">Sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="admin/new">Tin tức</a>
+                    </li>
+
                 </ul>
+            </li>
+            <li>
+                <a href="#daodienA" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" *ngIf="showAdminBoard">Quản lý giao diện</a>
+                <ul class="collapse list-unstyled" id="daodienA">
+                    <li>
+                        <a href="admin/introduce">Giới thiệu</a>
+                    </li>
+                    <li>
+                        <a href="#">Hỗ trợ trực tuyến</a>
+                    </li>
+                    <li>
+                        <a href="#">Nôi dung khác</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenuzA" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" *ngIf="showAdminBoard">Quản lý thông tin</a>
+                <ul class="collapse list-unstyled" id="pageSubmenuzA">
+                    <li>
+                        <a href="admin/transaction">Danh sách đơn hàng</a>
+                    </li>
+                    <li>
+                        <a href="admin/contact">Khách hàng liên hệ</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="admin/user"  *ngIf="showAdminBoard">Quản lý tài khoản</a>
+                <!-- <ul class="collapse list-unstyled" id="user">
+                    <li>
+                        <a href="admin/user">Quản lý tài khoản</a>
+                    </li>
+                    <li>
+                        <a href="admin/profile">Thông tin cá nhân</a>
+                    </li>
+                    <li>
+                        <a href="login">Đăng xuất</a>
+                    </li>
+                </ul> -->
             </li>
         </ul>
 

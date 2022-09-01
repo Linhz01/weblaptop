@@ -13,6 +13,11 @@
       <div class="row">
       <a href="#home">Vietnamese</a>
       <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a href="admin">Trang admin</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
         <li class="nav-item" *ngIf="showModeratorBoard">
           <a href="admin">Trang admin</a>
         </li>
@@ -35,8 +40,9 @@
       <b>
       <a routerLink="products" class="logo">Danh mục sản phẩm</a>
       <a href="#default" class="logo">Giảm giá</a>
-      <a href="#default" class="logo">Bán chạy</a>
+      <a routerLink="introduces" class="logo">Giới thiệu</a>
       <a routerLink="news" class="logo">Tin tức</a>
+      <a routerLink="contacts" class="logo">Liên hệ</a>
       
       </b>
       </div>

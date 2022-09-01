@@ -1,6 +1,6 @@
 <div class="contentproducts " id="main-container">
     <h3>Quản lý sản phẩm</h3>
-    <button class="btna btn btn-success" (click)="onOpenModalEdit(null,'add')">Thêm sản phẩm</button>
+    <button class="btna btn btn-success" (click)="onOpenModalEdit(null,'add')"><i class="fa fa-plus" aria-hidden="true"></i> Thêm sản phẩm</button>
     <div class="input-group mb-3">
     </div>
     <div class="contentx col-md-11" style="background-color: white;" >
@@ -16,7 +16,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Tên sản phẩm<i class="fa fa-sort"></i></th>
                 <th scope="col">Hãng</th>
                 <th scope="col">Danh mục</th>
                 <th scope="col">Hình ảnh</th>
@@ -150,7 +150,7 @@
     </div>
   </div>
 
-  
+ <!-- add product  -->
     <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content">

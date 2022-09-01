@@ -1,1 +1,159 @@
-<p>dashboard works!</p>
+<div class="contentproducts " id="main-container">
+    <div class="row" style="margin-left: 27px; margin-right: 30px;" >
+        <div class="col-md-3">
+            <div class="card doanhthu">
+                <div class="card-body">
+                    <div class="stat">
+                        <div class="stat-icon dib">
+                            <div class="row">
+                            <i class="fa fa-usd fa-2" aria-hidden="true"></i>
+                            <div class="stat-content">
+                                <div class="text-left">
+                                    <div class="col" style="margin-top: 10px;">
+                                        <b>518.000.000</b>
+                                        <br>
+                                        <b>Doanh thu trong tháng</b>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card phanhoi">
+                <div class="card-body">
+                    <div class="stat">
+                        <div class="stat-icon dib">
+                            <div class="row">
+                                <i class="fa fa-comments fa-2" aria-hidden="true"></i>  
+                            <div class="stat-content">
+                                <div class="text-left">
+                                    <div class="col" style="margin-top: 10px;">
+                                        <b>0</b>
+                                        <br>
+                                        <b>Ý kiến phản hồi</b>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card sanphambanduoc">
+                <div class="card-body">
+                    <div class="stat">
+                        <div class="stat-icon dib">
+                            <div class="row">
+                                <i class="fa fa-shopping-cart fa-2" aria-hidden="true"></i>
+                            <div class="stat-content">
+                                <div class="text-left">
+                                    <div class="col" style="margin-top: 10px;">
+                                        <b>11</b>
+                                        <br>
+                                        <b>Sản phẩm</b>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md" style="margin-right: 10px;">
+            <div class="card luottruycap">
+                <div class="card-body">
+                    <div class="stat">
+                        <div class="stat-icon dib">
+                            <div class="row">
+                                <i class="fa fa-users fa-2" aria-hidden="true"></i>
+                            <div class="stat-content">
+                                <div class="text-left">
+                                    <div class="col" style="margin-top: 10px;">
+                                        <b>8</b>
+                                        <br>
+                                        <b>Tài khoản</b>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="card col-md-7" style="margin-left: 70px; margin-right:65px;">
+        <br>
+        <div class="tran" style="margin-left: 20px;">
+        <div class="row"></div>
+        <h3><b>Danh sách đơn hàng<br><a href="admin/transaction">Đi tới quản lý</a></b></h3>
+        <table class="table table-striped col-md-11" style="margin-bottom: 10px;">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên người mua</th>
+                <th scope="col">Sđt</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tổng tiền</th>
+                <th scope="col">Tình trạng</th>
+                <!-- <th scope="col">Tình trạng đơn hàng</th>
+                <th scope="col" style="text-align: right;" >Hiển thị</th> -->
+                <th scope="col" > <div style="float: right;"></div></th>
+
+              </tr>
+            </thead>
+            <tbody *ngFor="let transaction of trans | paginate: { itemsPerPage: 5, currentPage: p}">
+
+              <tr>
+                <th scope="row">{{transaction.id}}</th>
+                <td>{{transaction.fullname}}</td>
+                <td>{{transaction.phone}}</td>
+                <td>{{transaction.email}}</td>
+                <td>{{transaction.total | number}} đ</td>
+
+                <td *ngIf="transaction.status == null"><span class="badge badge-primary">Đang chờ xác nhận</span></td>
+                <td *ngIf="transaction.status == 'Đang xử lí'"><span class="badge badge-primary">Đang xử lý</span></td>
+                <td *ngIf="transaction.status == 'Đã giao'"><span class="badge badge-success">{{transaction.status}}</span></td>
+                <td *ngIf="transaction.status == 'Đơn hàng lỗi'"><span class="badge badge-danger">{{transaction.status}}</span></td>
+                <td>
+                  <!-- <div style="float: right;">
+                   <a (click)="onOpenModalEdit(transaction, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                  </div> -->
+                  </td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event" style="float: right; margin-right: 57px"></pagination-controls>
+          </div>
+    </div>
+    <div class="card col-md-3">
+        <br>
+        <div class="tran" style="margin-left: 20px; padding-right: 30px;">
+            <h3><b>Sản phẩm mới</b></h3>
+            <hr>
+            <b>1. Laptop Dell Vostro 3510 (V5I3305W)</b>
+            <hr>
+            <b>2. Laptop Dell G15 5515 (P105F004DGR)</b>
+            <hr>
+            <b>3. Laptop Lenovo ThinkBook 14 G3 ACL (21A200CQVN)</b>
+            <hr>
+            <b>4. Laptop LG Gram 2022 16Z90Q-G.AH52A5</b>
+            <hr>
+            <b>5. MacBook Pro M2 2022 13.3 inch (MNEP3SAA)</b>
+            <hr>
+            <b>6. MACBOOK PRO 14 2021 M1 PRO (MKGR3) SILVER</b>
+            <hr>
+        </div>
+    </div>
+    </div>
+    
+</div>
