@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@coreui/angular": "^4.0.0-beta.5",
-    "@coreui/coreui": "^4.1.3",
-    "@coreui/icons": "^2.1.0"
-  }
-}
