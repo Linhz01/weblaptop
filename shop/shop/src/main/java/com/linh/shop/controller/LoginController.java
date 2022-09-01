@@ -70,12 +70,12 @@ public class LoginController {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
-					.body(new MessageResponse("Error: Username is already taken!"));
+					.body(new MessageResponse("Tài khoản đã tồn tại"));
 		}
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity
 					.badRequest()
-					.body(new MessageResponse("Error: Email is already in use!"));
+					.body(new MessageResponse("Email đã được sử dụng"));
 		}
     // Create new user's account
     Users user = new Users( signUpRequest.getUsername(), 
@@ -113,6 +113,6 @@ public class LoginController {
 		}
 		user.setRoles(roles);
 		userRepository.save(user);
-		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+		return ResponseEntity.ok(new MessageResponse("Đăng ký thành công"));
 	}
 }

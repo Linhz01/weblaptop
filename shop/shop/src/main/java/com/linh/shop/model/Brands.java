@@ -11,6 +11,7 @@ public class Brands{
 	@Column(nullable = false, updatable = false)
 	private Long id;
 
+    @Column(unique = true)
     @NotNull(message = "Không được để trống trường này")
     private String name;
 

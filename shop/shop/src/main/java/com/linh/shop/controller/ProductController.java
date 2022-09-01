@@ -9,6 +9,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 import com.linh.shop.exception.ResourceNotFoundException;
 import com.linh.shop.model.Products;
+import com.linh.shop.model.Transactions;
 import com.linh.shop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,6 +51,13 @@ public class ProductController {
         List<Products> products = productRepository.find2530(minp, maxp);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
+    // @GetMapping("/price/{totalProduct}")
+    // public ResponseEntity<List<Transactions>> gettotalProduct() {
+    //     List<Transactions> products = productRepository.turnoverProduct();
+    //     return new ResponseEntity<>(products, HttpStatus.OK);
+    // }
+    
 
     @GetMapping("/find/{id}")
     public ResponseEntity<Products> getProductById(@PathVariable("id") Long id){
