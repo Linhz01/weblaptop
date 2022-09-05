@@ -39,9 +39,5 @@ public class ProductService {
         productRepository.deleteProductById(id);
     }
 
-    public List<Products> fin10(){
-        return productRepository.fin10();
-    }
-
 }
 

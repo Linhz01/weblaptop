@@ -1,5 +1,7 @@
 package com.linh.shop.model;
 
+import java.util.Date;
+
 // import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -15,9 +17,6 @@ public class Contacts{
     private String name;
 
     @NotNull(message = "Không được để trống trường này")
-    private String role;
-
-    @NotNull(message = "Không được để trống trường này")
     private String email;
 
     @NotNull(message = "Không được để trống trường này")
@@ -28,26 +27,25 @@ public class Contacts{
 
     private String fileURL;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users users;
+    private String timesend;
+
+    private String status;
 
     public Contacts() {
     }
 
     public Contacts(int id, @NotNull(message = "Không được để trống trường này") String name,
-            @NotNull(message = "Không được để trống trường này") String role,
             @NotNull(message = "Không được để trống trường này") String email,
             @NotNull(message = "Không được để trống trường này") int phone,
-            @NotNull(message = "Không được để trống trường này") String content, String fileURL, Users users) {
+            @NotNull(message = "Không được để trống trường này") String content, String fileURL, String timesend, String status) {
         this.id = id;
         this.name = name;
-        this.role = role;
         this.email = email;
         this.phone = phone;
         this.content = content;
         this.fileURL = fileURL;
-        this.users = users;
+        this.timesend = timesend;
+        this.status = status;
     }
 
     public int getId() {
@@ -64,14 +62,6 @@ public class Contacts{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getEmail() {
@@ -106,13 +96,23 @@ public class Contacts{
         this.fileURL = fileURL;
     }
 
-    public Users getUsers() {
-        return users;
+
+    public String getStatus() {
+        return status;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    
+    public String getTimesend() {
+        return timesend;
+    }
+
+    public void setTimesend(String timesend) {
+        this.timesend = timesend;
+    }
+
+
+   
 }

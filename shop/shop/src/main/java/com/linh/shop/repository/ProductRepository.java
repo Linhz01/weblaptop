@@ -13,7 +13,7 @@ public interface ProductRepository extends JpaRepository<Products, Long> {
     Optional<Products> findProductById(Long id);
 
     @Query(value ="SELECT * FROM shoplaptop.products ORDER BY id DESC LIMIT 0, 6", nativeQuery = true)
-    List<Products> fin10();
+    List<Products> fin5();
 
     @Query(value = "select * from shoplaptop.products p where p.brand_id = ?1", nativeQuery = true)
     List<Products> fListProductsByBrandID(Long brand_id);

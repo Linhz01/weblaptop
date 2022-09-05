@@ -70,6 +70,12 @@ public class ProductController {
 		}
 	}
 
+    @GetMapping("/find6")
+    public ResponseEntity<List<Products>> getProductById(){
+		List<Products> productData = productRepository.fin5();
+        return new ResponseEntity<>(productData, HttpStatus.OK);
+	}
+
     @PostMapping("/add")
     public ResponseEntity<Products> createTutorial(@RequestBody Products tutorial) {
         try {
