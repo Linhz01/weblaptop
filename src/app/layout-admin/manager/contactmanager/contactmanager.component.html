@@ -1,1 +1,55 @@
-<p>contactmanager works!</p>
+<div class="contentproducts " id="main-container">
+    <h3>Phản hồi khách hàng</h3>
+    <div class="input-group mb-3">
+    </div>
+    <div class="contentx col-md-11" style="background-color: white;" >
+      <br>
+      <!-- <b>Tổng: {{products.length}} sản phẩm</b>
+      <form class="form-inline my-2 my-lg-0" style="float: right;">
+         <input type="search" (ngModelChange)="searchProduct(key.value)" #key="ngModel" ngModel
+          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Tìm kiếm sản phẩm..." required>
+      </form> -->
+      <br>
+      <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Người gửi</th>
+                <th scope="col">SĐT</th>
+                <th scope="col">Email</th>
+                <th scope="col">Thời gian gửi</th>
+                <th scope="col">Nội dung</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col" > <div style="float: right;">Thao tác</div></th>
+
+              </tr>
+            </thead>
+            <tbody *ngFor="let contact of contacts | paginate: { itemsPerPage: 5, currentPage: p}">
+
+              <tr>
+                <th scope="row">{{contact.id}}</th>
+                <td>{{contact.name}}</td>
+                <td>{{contact.phone}}</td>
+                <td>{{contact.email}}</td>
+                <td>{{contact.timesend}}</td>
+                <td>{{contact.content}}</td>
+                <td *ngIf="contact.status == null"><span class="badge badge-primary">Đang chờ xử lý</span></td>
+                <td *ngIf="contact.status == 'Đã xử lý'"><span class="badge badge-success">{{contact.status}}</span></td>
+                <td *ngIf="contact.status == 'Đang xử lý'"><span class="badge badge-danger">{{contact.status}}</span></td>
+                <td>
+                  <div style="float: right;">
+                   <a class="btn btn-info tooltips" data-placement="top" data-original-title="Edit">&nbsp;<i class="fa fa-info" aria-hidden="true">&nbsp;</i> </a>
+                    <a class="btn btn-warning tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-wrench" aria-hidden="true"></i></a>
+                  </div>
+                  </td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event" previousLabel="Trước"
+          nextLabel="Tiếp"></pagination-controls>
+          
+    </div>
+</div>
+

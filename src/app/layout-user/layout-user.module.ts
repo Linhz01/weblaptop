@@ -17,6 +17,8 @@ import { HomeComponent } from '../component/home/home.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { ProfileComponent } from '../component/profile/profile.component';
 import { BrandComponent } from '../component/brand/brand.component';
+import { ContactsComponent } from '../component/contacts/contacts.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -32,6 +34,7 @@ import { BrandComponent } from '../component/brand/brand.component';
     HomeComponent,
     ProfileComponent,
     BrandComponent,
+    ContactsComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +44,7 @@ import { BrandComponent } from '../component/brand/brand.component';
     FormsModule,
     MatSortModule,
     MdbCarouselModule,
+    
     
     
 

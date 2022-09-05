@@ -45,6 +45,10 @@ export class ProductServiceService {
     return this.http.get<any>(`${this.apiServerUrl}/product/all/price/${minP}/${maxP}`);
   }
 
+  public get5ProductNew(): Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.apiServerUrl}/product/find6`);
+  }
+
 }
 
 //   getAll(params: any): Observable<any> {

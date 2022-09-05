@@ -29,7 +29,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     UserComponent,
-    ContactsComponent,
     CommentComponent,
     TransactionComponent,
     IntroducesComponent,
