@@ -24,9 +24,6 @@ public interface ProductRepository extends JpaRepository<Products, Long> {
     @Query(value = "SELECT * from shoplaptop.products p WHERE p.price between ?1 and ?2", nativeQuery = true)
     List<Products>  find2530(Long minp, Long maxp);
 
-    @Query(value = "SELECT * from shoplaptop.products p WHERE p.price between ?1 and ?2", nativeQuery = true)
-    List<Products>  totalProductSell(Long minp, Long maxp);
-
     @Query(value = "SELECT sum(p.total) from shoplaptop.transactions p WHERE p.status like 'da giao'", nativeQuery = true)
     List<Transactions> turnoverProduct();
 
