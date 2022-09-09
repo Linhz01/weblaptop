@@ -9,6 +9,7 @@ import { HomeComponent } from '../component/home/home.component';
 import { IntroducesComponent } from '../component/introduces/introduces.component';
 import { NewComponent } from '../component/new/new.component';
 import { ProductComponent } from '../component/product/product.component';
+import { ProfileComponent } from '../component/profile/profile.component';
 import { LayoutAdminComponent } from '../layout-admin/layout-admin.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'news', component: NewComponent },
   { path: 'contacts', component: ContactsComponent },
   { path: 'introduces', component: IntroducesComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '', component: HomeComponent },
 
 

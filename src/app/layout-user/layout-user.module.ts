@@ -19,6 +19,7 @@ import { ProfileComponent } from '../component/profile/profile.component';
 import { BrandComponent } from '../component/brand/brand.component';
 import { ContactsComponent } from '../component/contacts/contacts.component';
 import { DatePipe } from '@angular/common';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 
 
@@ -44,7 +45,7 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     MatSortModule,
     MdbCarouselModule,
-    
+    HotToastModule.forRoot(),
     
     
 

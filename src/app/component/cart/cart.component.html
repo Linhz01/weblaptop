@@ -41,27 +41,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of products; let i = index" ng-app="" >
+              <tr *ngFor="let product of products; let i = index" ng-app="" >
                 <td>
                     <div class="row">
-                      <a routerLink="/home/details/{{item.id}}">
-                        <img src="{{item.imageproduct}}" >
+                      <a routerLink="/home/details/{{product .id}}">
+                        <img src="{{product.imageproduct}}" >
                       </a>
                         <div class="col">
-                        <a routerLink="/home/details/{{item.id}}">
-                        <h4>{{item.productname}}</h4>
+                        <a routerLink="/home/details/{{product .id}}">
+                        <h4>{{product.productname}}</h4>
                         </a>
-                        <button (click)="removeItem(item)" type="submit" class="button button2" style="background-color: rgb(247, 93, 93);">Xóa</button>
+                        <button (click)="removeItem(product )" type="submit" class="button button2" style="background-color: rgb(247, 93, 93);">Xóa</button>
                         </div>
                     </div>
                 </td>
 
-                <td>{{item.price | number}}</td>
-                <!-- <td>{{item.quantity}}</td> -->
+                <td>{{product.price | number}}</td>
+                <!-- <td>{{product .quantity}}</td> -->
                 <td>
-                  <input type="number" ngModel="{{item.quantity}}" name="quantity" min="1" max="10" >
+                  1
                 </td>
-                <td div class="total">{{item.total*item.quantity | number}} đ</td>
+                <td div class="total">{{product.total*product.quantity | number}} đ</td>
               </tr>
               <tr>
 

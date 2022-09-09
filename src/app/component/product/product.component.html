@@ -48,8 +48,14 @@
                    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Tìm kiếm sản phẩm..." required>
                    <button (click)="searchProduct(key.value)" data-dismiss="modal" class="btn btn-primary" >Tìm kiếm</button>
                </form>
-               <b *ngIf="!isHomeRoute()" style="margin-left:10px;">Lap top đã lọc
-               </b>
+               <div *ngFor="let pro of get1">
+                <b *ngIf="!isHomeRoute()" style="margin-left:10px;">Lap top đã lọc
+                </b>|
+                <b *ngIf="isSearchRoute()">Lọc theo danh mục: {{pro.categories.categoryname}}</b>
+                <b *ngIf="isSearchBrandRoute()">Lọc theo hãng: {{pro.brands.name}}</b>
+                <b *ngIf="isSearchPriceRoute()">Lọc theo giá</b>
+               </div>
+               
                </div>
                <br>
 

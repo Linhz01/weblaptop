@@ -96,7 +96,19 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                       <div class="col">
-                        <p>{{currentProduct.information}}</p>
+                        <br>
+                        <div [innerHtml]="currentProduct.information  | slice:0:700"></div>
+                        <div class="collapse" id="boxnoidung">
+                          <div [innerHtml]="currentProduct.information  | slice:700:999999"></div>
+                      </div>
+                        <div style="text-align: center;">
+                          <button aria-expanded="false"  class="btn btn-outline-danger" data-toggle="collapse" data-target="#boxnoidung">Bấm vào đây</button>
+                        </div>
+
+                        <br>
+
+                       
+                        
                     </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

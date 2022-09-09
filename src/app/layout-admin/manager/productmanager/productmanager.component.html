@@ -223,8 +223,10 @@
                     </div>
                     <div class="form-group">
                      <label for="">Thông tin sản phẩm</label>
-                     <input type="" ngModel name="information" class="form-control" id="information" placeholder="Nhập thông tin" required>
-                 </div>
+                     
+                     <ckeditor [editor]="Editor"  ngModel name="information" id="information" required>
+                     </ckeditor>
+                  </div>
                     <div class="form-group">
                         <label for="email">Hình ảnh</label>
                         <input type="file" ngModel id="imageproduct" name="imageproduct">

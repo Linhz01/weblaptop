@@ -66,7 +66,6 @@ element.style {
     padding-top: 10px;
     margin-left: 15px;
     margin-right: 10px;
-    border-radius: 10px;
 
   }
 
@@ -93,7 +92,7 @@ element.style {
 
   #contentlaptop .button{
     margin-top: 50px;
-    padding: 5px 29px 5px 30px;
+    padding: 5px 29px 5px 29px;
     margin-left: 1px;
     text-align: center;
     text-decoration: none;
@@ -102,7 +101,6 @@ element.style {
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
     cursor: pointer;
-    border-radius: 5px;
     
   }
 
@@ -134,3 +132,4 @@ element.style {
 .productcontent .item{
   margin-bottom: 30px;
 }
+

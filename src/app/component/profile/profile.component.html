@@ -1,25 +1,126 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
-    <header class="jumbotron">
-      <h3>
-        <strong>{{ currentUser.username }}</strong> Profile
-      </h3>
-    </header>
-    <p>
-      <strong>Token:</strong>
-      {{ currentUser.accessToken.substring(0, 20) }} ...
-      {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-    </p>
-    <p>
-      <strong>Email:</strong>
-      {{ currentUser.email }}
-    </p>
-    <strong>Roles:</strong>
-    <ul>
-      <li *ngFor="let role of currentUser.roles">
-        {{ role }}
-      </li>
-    </ul>
-  </div>
-  <ng-template #loggedOut>
+<div class="product-top">
+    <div class="container-inner">
+        <a href="#default" class="logo">Home </a>/
+        <a href="#default" class="logo">Thông tin cá nhân</a>
+        
+    </div>
+</div>
+<div class="bgct" *ngIf="currentUser; else loggedOut">
+    <div class="cartcontent">
+        <div class="container-inner">
+            <div class="row">
+            <div id="contentlaptopx" class="col-md-3">
+                <br>
+                <div class="row">
+                    <div class="">
+                        <img src="https://cf.shopee.vn/file/36a8ed5177ae831783a10e1068957bb5_tn" style="border-radius: 50%; margin-left: 10px;">
+                    </div>
+                    
+                    <div class="col">
+                        <b>{{currentUser.username}}</b><br> 
+                        <a href="">Chỉnh sửa hồ sơ</a>
+                    </div>
+
+                </div>
+                
+                <hr class="hr">
+                <div class="row">
+                    <div class="col">
+                        <b>Họ tên:</b>
+                    </div>
+                    <div class="col">
+                        {{currentUser.name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <b>Số điện thoại:</b>
+                    </div>
+                    <div class="col">
+                        {{currentUser.phone}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <b>Email:</b>
+                    </div>
+                    <div class="col">
+                        {{currentUser.email}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <b>Địa chỉ:</b>
+                    </div>
+                    <div class="col">
+                        {{currentUser.address}}
+                    </div>
+                </div>
+                <br>
+                <br>
+                <hr>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><h3>Lịch sử mua hàng</h3></a>
+                    <a class="" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h3>Xem đơn hàng</h3></a>
+                    <a class="" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><h3>Xem ưu đãi</h3></a>
+                    <a class="link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><h3>Đổi mật khẩu</h3></a>
+                </div>
+                <br>
+                
+            </div>
+            <div id="contentlaptop" class="">
+                <br>
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <h2><b>LỊCH SỬ MUA HÀNG</b></h2>
+                        
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Mã đơn hàng</th>
+                                <th scope="col">Trạng thái</th>
+                                <th scope="col">Giá trị đơn hàng</th>
+                                <th scope="col">Phí ship</th>
+                                <th scope="col">Ngày giao hàng</th>
+                                <th scope="col">Ngày nhận hàng</th>
+                                <th scope="col">Tổng tiền</th>
+                                <!-- <th scope="col">Tình trạng đơn hàng</th>
+                                <th scope="col" style="text-align: right;" >Hiển thị</th> -->
+                                <th scope="col" > <div style="float: right;"></div></th>
+                
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                              <tr>
+                                <td>12344</td>
+                                <td><span class="badge badge-success">Đã nhận hàng</span></td>
+                                <td>99.999.999 đ</td>
+                                <td>free</td>
+                                <td>7/9/2022</td>
+                                <td>9/9/2022</td>
+                                <td>90.000.000 đ</td>
+                                <td>
+                                  <div style="float: right;">
+                                    <a href="" style="text-decoration: none; color: orange;"><b>Chi tiết</b></a>
+                                  </div>
+                                  </td>
+                              </tr>
+                              <tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Profile</div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                  </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+<ng-template #loggedOut>
     Please login.
-  </ng-template>
+</ng-template>

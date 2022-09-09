@@ -9,6 +9,8 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  path: string = "../../../assets/images/logo/logo.png";
+  alttext: string="first image"
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;

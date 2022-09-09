@@ -28,7 +28,7 @@
       <img class="d-block w-100" src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/1/637949702203521751_F-C1_1200x300.jpg" alt="Third slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/12/14/637750929820398764_F-C1_1200x300.png" alt="Third slide">
+      <img class="d-block w-100" src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/12/14/637750929820398764_F-C1_1200x300.png" alt="Fourth slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -42,6 +42,16 @@
 </div>
 <div style="background-color: #ededed;">
   <div class="container-inner">
+    <br>
+    <div class="row">
+      <div class="col">
+        <img src="https://cdn.tgdd.vn/2022/08/banner/Acer-800-200-800x200.png" style="width: 870px;">
+      </div>
+      <div class="col">
+        <img src="https://cdn.tgdd.vn/2022/09/banner/sticky-le-laptop--1--390x97.png" style="width: 422px;"><br>
+        <img src="https://cdn.tgdd.vn/2022/08/banner/sam-laptop390-97-copy-390x97-1.png" style="padding-top: 6px; width: 422px;">
+      </div>
+    </div>
     <br>
     <h2><b>SẢN PHẨM MỚI</b></h2>
     <div class="productcontent" style="">
@@ -65,45 +75,129 @@
       </div>
       </div>
     </div>
-  </div>
-  </div>
-<section class="banner-laptop">
-  <div class="box-container">
-    <div class="box-laptop b-flex">
-      <div class="box-laptop_left">
-        <img src="https://fptshop.com.vn/landing-laptop-gaming/Content/Desktop/images/product-banner2.png?v=202205191128">
-      </div>
-      <div class="box-laptop_right">
-        <img src="https://fptshop.com.vn/landing-laptop-gaming/Content/Desktop/images/title-bannerdk2.png?v=202205191128">
-        <img src="https://fptshop.com.vn/landing-laptop-gaming/Content/Desktop/images/box-Promo2.png?v=202205191128">
 
-      </div>
-      <div>
-        <!-- <img src="https://fptshop.com.vn/landing-laptop-gaming/Content/Desktop/images/Asseta.png">
-        <a class="brn-kpn">Khám phá ngay</a>
-        <img src="https://fptshop.com.vn/landing-laptop-gaming/Content/Desktop/images/Assetb.png"> -->
-      </div>
+    
+    
+  <br>
+  </div>
+  </div>
+
+  <!-- laptopnoibat -->
+  <div style="background-color: #353333; padding-bottom: 40px;">
+    <div class="container-inner">
+        <img src="https://fptshop.com.vn/landing-window-11/Content/desktop/images/list-banner.png?=210809" style="width: 100%;">
+        <br>
+        <br>
+        <div class="productcontent" style="">
+          <div class="row" style="">
+          <div id="contentlaptop" *ngFor="let product of products">
+            <img src="{{product.imageproduct}}" style="width: 200px;
+                      height: 120px;
+                      object-fit: contain;">
+                      <div class="logo">
+                      <img src="{{product.brands.logo}}">
+                      </div>
+                      
+                      <b><a href="" routerLink="/home/details/{{product.id}}">{{product.productname | slice:0:30}}...</a></b>
+                      <div class="col-md-12">
+                      </div> 
+                      <!-- <a href="details/{{product.id}}" (click)="productDetails(product.id)"> -->
+                      <a href="" routerLink="/home/details/{{product.id}}">
+                      <p>{{product.price | number}} đ</p>
+                      </a>
+                      <button class="button button1">Thêm vào giỏ hàng</button>
+          </div>
+          <div id="contentlaptop" *ngFor="let product of products">
+            <img src="{{product.imageproduct}}" style="width: 200px;
+                      height: 120px;
+                      object-fit: contain;">
+                      <div class="logo">
+                      <img src="{{product.brands.logo}}">
+                      </div>
+                      
+                      <b><a href="" routerLink="/home/details/{{product.id}}">{{product.productname | slice:0:30}}...</a></b>
+                      <div class="col-md-12">
+                      </div> 
+                      <!-- <a href="details/{{product.id}}" (click)="productDetails(product.id)"> -->
+                      <a href="" routerLink="/home/details/{{product.id}}">
+                      <p>{{product.price | number}} đ</p>
+                      </a>
+                      <button class="button button1">Thêm vào giỏ hàng</button>
+          </div>
+          </div>
+        </div>
+          <a href="" style="float: right; color: rgb(182, 209, 82);"><h4><b>XEM THÊM >></b></h4></a>
     </div>
   </div>
-</section>
-<section class="gift">
-  <div class="box-container">
-    <div class="gif-wrapper">
-      <div class="gif-title">
-        <img src="https://fptshop.com.vn/landing-laptop-gaming/Content/Desktop/images/gift-title.png">
+<!-- bán chạy -->
+<div style="background-color: #ededed;">
+  <div class="container-inner">
+    <div class="productcontent">
+      <br>
+      <h2><b>SẢN PHẨM BÁN CHẠY</b></h2>
+      <div class="productcontent" style="">
+        <div class="row" style="">
+        <div id="contentlaptop" *ngFor="let product of products">
+          <img src="{{product.imageproduct}}" style="width: 200px;
+                    height: 120px;
+                    object-fit: contain;">
+                    <div class="logo">
+                    <img src="{{product.brands.logo}}">
+                    </div>
+                    
+                    <b><a href="" routerLink="/home/details/{{product.id}}">{{product.productname | slice:0:30}}...</a></b>
+                    <div class="col-md-12">
+                    </div> 
+                    <!-- <a href="details/{{product.id}}" (click)="productDetails(product.id)"> -->
+                    <a href="" routerLink="/home/details/{{product.id}}">
+                    <p>{{product.price | number}} đ</p>
+                    </a>
+                    <button class="button button1">Thêm vào giỏ hàng</button>
+        </div>
+        </div>
       </div>
-      <div class="gif-content">
-        <img src="">
-      </div>
-      <div class="gif-btn">
-
-      </div>
-
+      
     </div>
+    <img src="https://philong.com.vn/media/banner/17_Mar207b6370ed3ec363bf6f99f421b4991f.png" width="100%">
+    <br>
+    <br>
+
+    <h2><b>CHUYÊN TRANG THƯƠNG HIỆU</b></h2>
+    <div class="row" >
+      <img src="https://cdn.tgdd.vn/2021/08/banner/Chuyentrangthuonghieu10-576x310.jpg" style="width: 320px; height: 150px; padding-left: 14px;">
+      <img src="https://cdn.tgdd.vn/2021/08/banner/Chuyentrangthuonghieu9-576x310.jpg" style="width: 320px; height: 150px; margin-left: 20px;">
+      <img src="https://cdn.tgdd.vn/2021/08/banner/Chuyentrangthuonghieu5-576x310.jpg" style="width: 320px; height: 150px; margin-left: 20px;">
+      <img src="https://cdn.tgdd.vn/2021/08/banner/Chuyentrangthuonghieu7-576x310.jpg" style="width: 320px; height: 150px; margin-left: 20px;">
+    </div>
+    <br>
+    <br>
+    <h2><b>CÁC SẢN PHẨM CÔNG NGHỆ KHÁC</b></h2>
+    <div class="row">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px; padding-left: 0;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 27px;">
+      <img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/laptop/man-hinh.png" style="margin-right: 32px;">
+      
+      
+      
+    
+    </div>
+    <br>
+    <br>
   </div>
-</section>
-<img  class="w-100" src="https://fptshop.com.vn/landing-laptop-gaming/Content/Desktop/images/gift-bg.png">
-<img class="w-100" src="https://fptshop.com.vn/landing-laptop-gaming/Content/Desktop/images/bg-game.png">
+</div>
+
+
+
+
+
+
 <!-- <script>
   $('.carousel').carousel({
     interval: 10
@@ -111,6 +205,7 @@
 
   })
 </script> -->
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>

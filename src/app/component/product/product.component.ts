@@ -8,6 +8,8 @@ import { BrandServiceService } from 'src/app/service/brand-service.service';
 import { CartServiceService } from 'src/app/service/cart-service.service';
 import { CategoryServiceService } from 'src/app/service/category-service.service';
 import { ProductServiceService } from 'src/app/service/product-service.service';
+import { HotToastService } from '@ngneat/hot-toast';
+
 
 @Component({
   selector: 'app-product',
@@ -47,15 +49,17 @@ export class ProductComponent implements OnInit {
   currentBrandID: number;
   minPrice: number;
   maxPrice: number;
-  thePageSize: number = 5;
-  thePageNumber: number = 1;
+  get1: any;
+
   
   constructor(private productService: ProductServiceService, 
               private cate: CategoryServiceService,
               private brands: BrandServiceService,
               private cartService: CartServiceService,
               private router: Router,
-              private route: ActivatedRoute,) { }
+              private route: ActivatedRoute,
+              private toastService: HotToastService,
+              ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -64,9 +68,7 @@ export class ProductComponent implements OnInit {
     this.getProduct();
     this.getCategory();
     this.getBrand();
-    
-
-  
+    console.log(this.products.slice(0,1));
   }
     // Category
     public getCategory(): void {
@@ -118,6 +120,7 @@ export class ProductComponent implements OnInit {
       this.productService.getProductByCategoryID(this.currentCategoryID).subscribe(
         data => {
           this.products = data;
+          this.get1 = this.products.slice(0, 1)
         }
       
       )
@@ -128,6 +131,7 @@ export class ProductComponent implements OnInit {
         this.productService.getProductByBrandID(this.currentBrandID).subscribe(
           data => {
             this.products = data;
+            this.get1 = this.products.slice(0, 1)
           }
         )
       }
@@ -138,6 +142,7 @@ export class ProductComponent implements OnInit {
           this.productService.getProductByPrice(this.minPrice, this.maxPrice).subscribe(
             data => {
               this.products = data
+              this.get1 = this.products.slice(0, 1)
             }
           )
         }
@@ -145,6 +150,7 @@ export class ProductComponent implements OnInit {
         this.productService.getProduct().subscribe(
           (response: Products[]) => {
             this.products = response;
+
             this.products .forEach((a:any) =>
             {
                Object.assign(a,{quantity:1,total:a.price});
@@ -159,6 +165,7 @@ export class ProductComponent implements OnInit {
     }
 
   }
+  
 
   public getProductByBrandID(brandID: number): void {
     
@@ -177,8 +184,17 @@ export class ProductComponent implements OnInit {
   }
 
   isSearchRoute(){
-    return this.router.url === '/home/brand/?id';
+    return this.router.url === '/home/category/1';
   }
+
+  isSearchBrandRoute(){
+    return this.router.url === '/home/brand/1';
+  }
+
+  isSearchPriceRoute(){
+    return this.router.url === '/home/price/15000000/20000000';
+  }
+  
 
   public searchProduct(key: string): void {
     console.log(key);
@@ -190,7 +206,10 @@ export class ProductComponent implements OnInit {
     }
     this.products = results;
     if (results.length === 0 || !key) {
+      this.showToastNotFound();
       this.getProduct();
+      
+
     }
   }
 
@@ -204,8 +223,15 @@ export class ProductComponent implements OnInit {
 
   public addtocart(product: Products){
     this.cartService.addtoCart(product);
-    window.alert('Thêm vào giỏ hàng thành công!');
+    this.showToast();
   }
 
+  showToast() {
+    this.toastService.success('Thêm vào giỏ hàng thành công!')
+  }
+
+  showToastNotFound(){
+    this.toastService.error('Không tìm thấy sản phẩm!')
+  }
 
 }

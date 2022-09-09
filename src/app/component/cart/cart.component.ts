@@ -25,6 +25,8 @@ export class CartComponent implements OnInit {
   phone?: number;
   public users: Users;
 
+
+
   constructor(private cartService: CartServiceService,
               private tokenStorageService: TokenStorageService,
               private router: Router,
@@ -91,6 +93,4 @@ export class CartComponent implements OnInit {
   productDetails(id: number){
     this.router.navigate(['home/details', id]);
   }
-
-
 }

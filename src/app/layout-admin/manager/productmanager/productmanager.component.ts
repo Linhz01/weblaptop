@@ -8,6 +8,7 @@ import { Products } from 'src/app/model/products';
 import { BrandServiceService } from 'src/app/service/brand-service.service';
 import { CategoryServiceService } from 'src/app/service/category-service.service';
 import { ProductServiceService } from 'src/app/service/product-service.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-productmanager',
@@ -17,6 +18,7 @@ import { ProductServiceService } from 'src/app/service/product-service.service';
 export class ProductmanagerComponent implements OnInit {
   
   p: number = 1;
+  public Editor = ClassicEditor;
   public products: Products[];
   public brand: Brands[];
   public category: Categories[];
