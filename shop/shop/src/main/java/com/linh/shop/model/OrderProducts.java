@@ -7,9 +7,9 @@ public class OrderProducts {
     private CompositeKey id;
 
     @ManyToOne
-    @MapsId("transaction_id")
-    @JoinColumn(name = "transaction_id")
-    private Transactions transactions;
+    @MapsId("user_id")
+    @JoinColumn(name = "user_id")
+    private Users users;
 
     @ManyToOne
     @MapsId("product_id")
@@ -24,17 +24,14 @@ public class OrderProducts {
     public OrderProducts() {
     }
 
-
-    public OrderProducts(CompositeKey id, Transactions transactions, Products products, int amount, int price,
-            String status) {
+    public OrderProducts(CompositeKey id, Users users, Products products, int amount, int price, String status) {
         this.id = id;
-        this.transactions = transactions;
+        this.users = users;
         this.products = products;
         this.amount = amount;
         this.price = price;
         this.status = status;
     }
-
 
     public CompositeKey getId() {
         return id;
@@ -44,17 +41,6 @@ public class OrderProducts {
     public void setId(CompositeKey id) {
         this.id = id;
     }
-
-
-    public Transactions getTransactions() {
-        return transactions;
-    }
-
-
-    public void setTransactions(Transactions transactions) {
-        this.transactions = transactions;
-    }
-
 
     public Products getProducts() {
         return products;
@@ -95,5 +81,14 @@ public class OrderProducts {
         this.status = status;
     }
 
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
+    
     
 }

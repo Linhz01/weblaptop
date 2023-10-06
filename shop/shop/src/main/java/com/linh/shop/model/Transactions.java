@@ -1,4 +1,7 @@
 package com.linh.shop.model;
+import java.util.HashSet;
+import java.util.Set;
+
 // import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -23,7 +26,11 @@ public class Transactions {
     @NotNull(message = "Không được để trống")
     private String address;
 
+    private String datetimeput;
+
     private String datetime;
+
+    private String datetimein;
 
     private int total;
 
@@ -31,29 +38,33 @@ public class Transactions {
 
     private String note;
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_id", nullable = false)
-    // private Users users;
+    private String userid;
 
     public Transactions() {
     }
 
+    
+
     public Transactions(int id, @NotNull(message = "Không được để trống") String fullname,
             @NotNull(message = "Không được để trống") int phone,
             @NotNull(message = "Không được để trống") @Email(message = "Email không hợp lệ") String email,
-            @NotNull(message = "Không được để trống") String address, String datetime, int total, String status,
-            String note) {
+            @NotNull(message = "Không được để trống") String address, String datetimeput, String datetime,
+            String datetimein, int total, String status, String note, String userid) {
         this.id = id;
         this.fullname = fullname;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.datetimeput = datetimeput;
         this.datetime = datetime;
+        this.datetimein = datetimein;
         this.total = total;
         this.status = status;
         this.note = note;
-
+        this.userid = userid;
     }
+
+
 
     public int getId() {
         return id;
@@ -98,7 +109,7 @@ public class Transactions {
     public String getDatetime() {
         return datetime;
     }
-
+    
     public void setDatetime(String datetime) {
         this.datetime = datetime;
     }
@@ -127,6 +138,31 @@ public class Transactions {
         this.note = note;
     }
 
+    public String getDatetimeput() {
+        return datetimeput;
+    }
+
+    public void setDatetimeput(String datetimeput) {
+        this.datetimeput = datetimeput;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getDatetimein() {
+        return datetimein;
+    }
+
+
+
+    public void setDatetimein(String datetimein) {
+        this.datetimein = datetimein;
+    }
 
     
     

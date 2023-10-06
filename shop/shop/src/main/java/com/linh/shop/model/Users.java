@@ -80,7 +80,8 @@ public class Users{
     //     // this.contacts = contacts;
     //     // this.transactions = transactions;
     // }
-
+    
+    
     public Users(@NotNull(message = "Không được để trống") @NotBlank String username,
     @NotNull(message = "Email không được rỗng") @Email(message = "Email không hợp lệ") String email,
     @NotNull String name, String address, int phone, @NotBlank @Size(max = 120) String password) {

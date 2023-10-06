@@ -14,6 +14,9 @@ public interface ProductRepository extends JpaRepository<Products, Long> {
 
     @Query(value ="SELECT * FROM shoplaptop.products ORDER BY id DESC LIMIT 0, 6", nativeQuery = true)
     List<Products> fin5();
+    
+    @Query(value ="SELECT * FROM shoplaptop.products ORDER BY id DESC LIMIT 0, 5", nativeQuery = true)
+    List<Products> fin6();
 
     @Query(value = "select * from shoplaptop.products p where p.brand_id = ?1", nativeQuery = true)
     List<Products> fListProductsByBrandID(Long brand_id);
@@ -26,5 +29,7 @@ public interface ProductRepository extends JpaRepository<Products, Long> {
 
     @Query(value = "SELECT sum(p.total) from shoplaptop.transactions p WHERE p.status like 'da giao'", nativeQuery = true)
     List<Transactions> turnoverProduct();
+
+    
 
 }

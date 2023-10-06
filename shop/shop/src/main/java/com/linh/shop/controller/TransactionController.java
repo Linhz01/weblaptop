@@ -32,6 +32,12 @@ public class TransactionController {
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 
+    @GetMapping("/all/user/{id}")
+    public ResponseEntity<List<Transactions>> getAllProductsByBrand(@PathVariable("id") Long id) {
+        List<Transactions> transactions = transactionRepository.findByUsers(id);
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
+
     // @GetMapping("/find/{id}")
     // public ResponseEntity<Categories> getCategoryById(@PathVariable("id") Long id) 
     //     throws ResourceNotFoundException{

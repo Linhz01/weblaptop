@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Embeddable
 public class CompositeKey implements Serializable{
 
-    @Column(name = "transaction_id")
+    @Column(name = "user_id")
     int transactionId;
 
     @Column(name = "product_id")

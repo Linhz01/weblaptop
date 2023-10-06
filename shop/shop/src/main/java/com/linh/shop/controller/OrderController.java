@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.linh.shop.model.OrderProducts;
+import com.linh.shop.model.Products;
 import com.linh.shop.repository.OrderReponsitory;
 
 @RestController
@@ -33,10 +34,12 @@ public class OrderController {
         return new ResponseEntity<>(addOrders, HttpStatus.CREATED);
     }
 
-    @GetMapping("/all/transaction/{id}")
-    public ResponseEntity<List<OrderProducts>> getAllProductsByTransactionID(@PathVariable("id") Long id) {
-        List<OrderProducts> products = orderReponsitory.flistOrderbyTransaction(id);
-        return new ResponseEntity<>(products, HttpStatus.OK);
-    }
+    // @GetMapping("/all/transaction/{id}")
+    // public ResponseEntity<List<Products>> getAllProductsByTransactionID(@PathVariable("id") Long id) {
+    //     List<Products> products = orderReponsitory.flistOrderbyTransaction(id);
+    //     return new ResponseEntity<>(products, HttpStatus.OK);
+    // }
+
+    
 
 }
